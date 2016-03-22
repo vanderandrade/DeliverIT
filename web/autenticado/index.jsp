@@ -1,4 +1,3 @@
-
 <body>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
