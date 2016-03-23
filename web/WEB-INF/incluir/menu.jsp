@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.jsp">Deliver IT</a>
+            <a class="navbar-brand" href="index.jsp">Deliver IT!</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -37,27 +37,35 @@
                     <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
                 </li>
                 <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Cadastro<i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
+                    <a href="javascript:;" data-toggle="collapse" data-target="#cad"><i class="fa fa-fw fa-arrows-v"></i> Cadastro<i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="cad" class="collapse">
                         <li>
                             <a href="#">Categoria de Produtos</a>
                         </li>
                         <li>
                             <a href="#">Produtos</a>
                         </li>
+                        <li>
+                            <a href="#">Descontos</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> ITEM</a>
+                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Gerenciamento de Pedidos</a>
                 </li>
                 <li>
-                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> ITEM</a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#reg"><i class="fa fa-fw fa-edit"></i> Regras de Negócios<i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="reg" class="collapse">
+                        <li>
+                            <a href="#">Descontos Condicionais</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> ITEM</a>
+                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Dados de Pedido/Entrega</a>
                 </li>
                 <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> ITEM</a>
+                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
                 </li>                    
                 <li>
                     <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> ITEM</a>

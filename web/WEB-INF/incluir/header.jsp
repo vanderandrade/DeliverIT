@@ -6,10 +6,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Dilver é um sistema de disk-entrega">
+        <meta name="description" content="Deliver IT! é um sistema de disk-entrega">
         <meta name="author" content="Leonardo Dias, Vander, Octavio - PUC MINAS">
 
-        <title>- Deliver IT -</title>    
+        <title>- Deliver IT! -</title>    
 
         <!-- Bootstrap Core CSS -->
         <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
