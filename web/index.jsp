@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <form method="post" action="autenticado/index.jsp">
+        <form method="post" action="LoginController">
             Usuário:<br>
             <input type="text" name="usuario"><br>
             Senha:<br>
