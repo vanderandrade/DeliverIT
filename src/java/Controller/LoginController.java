@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controller;
 
 import java.io.IOException;
@@ -13,10 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Vander
- */
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
@@ -26,7 +17,7 @@ public class LoginController extends HttpServlet {
         PrintWriter out = response.getWriter();
         String nome = request.getParameter("usuario");
         String senha = request.getParameter("senha");
-        MySqlController conexao = new MySqlController();
+        //MySqlController conexao = new MySqlController();
         
         //if(conexao.CheckLoginMysql(nome, senha))
         if(nome.equals("destaque") && senha.equals("1234"))
@@ -36,10 +27,12 @@ public class LoginController extends HttpServlet {
         }
         else
         {
-            out.println("<h2>Usuário e/ou Senha inválidos!</h2>");            
+            out.println("<h2>Usuário e/ou Senha inválidos!</h2>");   
+            out.println("<a href=index.jsp>Voltar</a>");   
+            
         }
         
-        conexao.FecharConexao();
+//        conexao.FecharConexao();
     }
 
 }
