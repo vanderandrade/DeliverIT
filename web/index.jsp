@@ -10,17 +10,23 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>- Deliver IT! -</title>
+        <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/bootstrap/css/login.css" rel="stylesheet">
+        
+        
+
     </head>
     <body>
-        <h1>Bem vindo(a)!</h1>
-        <form method="post" action="LoginController">
-            Usuário:<br>
-            <input type="text" name="usuario"><br>
-            Senha:<br>
-            <input type="password" name="senha"><br>
-            <input type="submit" value="Acessar">
-        </form>
+        <div class="container">            
+            <form class="form-login" method="post" action="LoginController">
+                <h2 class="form-login-heading">DeliveryIT!</h2>                
+                    <label for="inputUsuario" class="sr-only">Nome do Usuário</label>
+                    <input name="usuario" type="usuario" id="inputUsuario" class="form-control" placeholder="Nome do Usuário" required autofocus>
+                    <label for="inputSenha" class="sr-only">Senha</label>
+                    <input name="senha" type="senha" id="inputSenha" class="form-control" placeholder="Senha" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit"> Entrar </button>
+            </form>
+        </div>
     </body>
 </html>

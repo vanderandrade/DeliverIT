@@ -1,32 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-/**
- *
- * @author Vander
- */
 public class Usuario {
     private String nome = "UNKNOW";
-    private String senha = "UNKNOW";
+    private int tipo;
      
-    public Usuario(String name, String password){
+    public Usuario(String name, int tipo){
         this.nome = name;
-        this.senha = password;
+        this.tipo = tipo;
     }
+
     public String getName() {
         return nome;
     }
-    public void setName(String name) {
-        this.nome = name;
+
+    public int getTipo() {
+        return tipo;
     }
-    public String getPassword() {
-        return senha;
-    }
-    public void setPassword(String password) {
-        this.senha = password;
-    }
+    
 }

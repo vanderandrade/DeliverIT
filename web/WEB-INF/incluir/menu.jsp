@@ -1,4 +1,11 @@
-    <!-- Navigation -->
+<%
+String Usuario = null;
+if(session.getAttribute("usuario")==null)
+{
+    response.sendRedirect("/index.jsp");
+}else Usuario = (String) session.getAttribute("usuario");
+%>
+<!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -14,7 +21,7 @@
         <ul class="nav navbar-right top-nav">
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>Vander <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%=Usuario %> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
 
                     <li>
@@ -22,7 +29,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <form action="LogoutController" method="post"><i class="fa fa-fw fa-power-off"></i><input type="submit" value="Logout"></form>
                     </li>
                 </ul>
             </li>

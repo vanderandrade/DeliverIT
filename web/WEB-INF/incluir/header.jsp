@@ -20,3 +20,9 @@
         <!-- Custom Fonts -->
         <link href="../resources/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </head>
+    <% 
+    if(session.getAttribute("usuario")==null)
+    {
+        response.sendRedirect("../index.jsp");
+    }
+    %>
