@@ -16,11 +16,11 @@ public class MySqlController {
     public MySqlController() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            String serverName = "localhost";
-            String mydatabase ="deliveryit";
+            String serverName = "localhost";  //179.188.16.32
+            String mydatabase ="deliverit"; //transtass1
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
-            String username = "root";
-            String password = "177013aew";
+            String username = "root"; //transtassi1
+            String password = "TheGodfather2"; //agorasim0
             conn = (Connection) DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException ex) {
@@ -40,8 +40,7 @@ public class MySqlController {
         }
     }
     
-    public boolean CheckLogin(String usuario, String senha)
-    {
+    public boolean CheckLogin(String usuario, String senha) {
 
         String query = "SELECT * FROM cad_funcionario WHERE login='"+usuario+"' AND senha='"+senha+"'";
         PreparedStatement stmt;
@@ -69,6 +68,37 @@ public class MySqlController {
 
     public Usuario getUsu() {
         return usu;
-    }      
+    }     
     
+    public void atualizaCategoria(String novoNome,int codigoCategoria) { //UPDATE
+        try {
+            String instrucao = "UPDATE `categoria` SET `nomeCategoria`= '"+ novoNome +"' WHERE codCategoria = '"+ codigoCategoria +"'";
+            PreparedStatement stmt;
+            
+            stmt = conn.prepareStatement(instrucao);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void criarCategoria(String nomeCategoria) { //CREATE
+        try {
+            PreparedStatement stmt = conn
+                    .prepareStatement("INSERT INTO categoria(nomeCategoria) VALUES ('"+ nomeCategoria +"')");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void removerCategoria(int codCategoria) { //DELETE
+        try {
+            PreparedStatement preparedStatement = conn
+                    .prepareStatement("DELETE FROM categoria where codCategoria= "+codCategoria);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }    
 }

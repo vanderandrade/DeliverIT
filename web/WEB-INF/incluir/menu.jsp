@@ -38,7 +38,7 @@ if(session.getAttribute("usuario")==null)
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Início</a>
+                    <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Início</a>
                 </li>
                 <li>
                     <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
@@ -47,7 +47,7 @@ if(session.getAttribute("usuario")==null)
                     <a href="javascript:;" data-toggle="collapse" data-target="#cad"><i class="fa fa-fw fa-arrows-v"></i> Cadastro<i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="cad" class="collapse">
                         <li>
-                            <a href="#">Categoria de Produtos</a>
+                            <a href="categoria.jsp">Categoria de Produtos</a>
                         </li>
                         <li>
                             <a href="#">Produtos</a>
