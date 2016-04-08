@@ -8,6 +8,16 @@
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/autenticado/LogoutController</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CategoriaController</servlet-name>
+        <servlet-class>Controller.CategoriaController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CategoriaController</servlet-name>
+    <url-pattern>/autenticado/CategoriaController</url-pattern>
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

@@ -15,22 +15,21 @@
                 <form method="post" action="CategoriaController">               
                     <label for="inputCategoria">Cadastrar categoria</label>
                     <input name="nomeCategoria" type="text" required>
-                    <button type="submit" name="cadastrar"> Cadastrar </button>
+                    <button type="submit" name="botao" value="cadastrar"> Cadastrar </button>
                 </form>
                 
-              <!--  <form method="post" action="CategoriaController">               
+              <form method="post" action="CategoriaController">               
                     <label for="inputUsuario">Atualizar categoria</label>
                     <input name="nomeCategoria" type="text" required>
-
-                    <!-- INSERÇÃO DE UM COMBO BOX <input name="novoNome" type="combobox" required>
-                    <button type="submit" name="atualizar"> Atualizar </button>
+                    <!-- INSERÇÃO DE UM COMBO BOX -->
+                    <button type="submit" name="botao" value="atualizar"> Atualizar </button>
                 </form>
                 
                 <form method="post" action="CategoriaController">               
                     <label for="inputUsuario">Remover categoria</label>
                     <input name="nomeCategoria" type="text" required>
-                    <button type="submit" name="remover"> Remover </button>
-                </form>-->
+                    <button type="submit" name="botao" value="remover"> Remover </button>
+                </form>
             </div>
 
         </div>

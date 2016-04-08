@@ -1,8 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,30 +19,29 @@ public class CategoriaController extends HttpServlet {
             throws ServletException, IOException {
         
         MySqlController conexao = new MySqlController();
+        String botao = request.getParameter("botao");
         
+        switch (botao) {
+            case "cadastrar":
+                String nomeCategoria = request.getParameter("nomeCategoria");
+                conexao.criarCategoria(nomeCategoria);
+                break;
+            case "atualizar":
+                {
+                    String novoNome = request.getParameter("novoNome");
+                    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
+                    conexao.atualizaCategoria(novoNome, codCategoria);
+                    break;
+                }
+            case "remover":
+                {
+                    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
+                    conexao.removerCategoria(codCategoria);
+                    break;
+                }
+        }
+        response.sendRedirect("/autenticado/categoria.jsp");
         
-        //if(/*Qualquer indicativo de que o usuário deseja inserir*/true) {
-            String nomeCategoria = request.getParameter("nomeCategoria");
-            
-            conexao.criarCategoria(nomeCategoria);
-            
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("autenticado/categoria.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<center><font color=red>Efetuado com sucesso!</font></center>");
-            rd.include(request, response);
-            
-        //}
-        //else if(/*Qualquer indicativo de que o usuário deseja atualizar*/true){
-        //    String novoNome = request.getParameter("novoNome");
-        //    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
-        //    
-        //    conexao.atualizaCategoria(novoNome, codCategoria);
-        //}
-        //else if(/*Qualquer indicativo de que o usuário deseja excluir*/true){
-        //    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
-        //    
-        //    conexao.removerCategoria(codCategoria);
-       // }
         conexao.Fechar();
     }
 }
