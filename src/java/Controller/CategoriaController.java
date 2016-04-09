@@ -21,14 +21,14 @@ public class CategoriaController extends HttpServlet {
                 conexao.criarCategoria(request.getParameter("atividade"));
                 break;
             case "atualizar":
-                {
+                { // ARRUMAR OS PARÂMETROS P/ COMBO BOX
                     String novoNome = request.getParameter("novoNome");
                     int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
                     conexao.atualizaCategoria(novoNome, codCategoria);
                     break;
                 }
             case "remover":
-                {
+                { // ARRUMAR OS PARÂMETROS P/ COMBO BOX
                     int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
                     conexao.removerCategoria(codCategoria);
                     break;
