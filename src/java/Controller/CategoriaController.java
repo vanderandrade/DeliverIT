@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Vander
- */
 @WebServlet(name = "CategoriaController", urlPatterns = {"/CategoriaController"})
 public class CategoriaController extends HttpServlet {
 
@@ -19,12 +15,10 @@ public class CategoriaController extends HttpServlet {
             throws ServletException, IOException {
         
         MySqlController conexao = new MySqlController();
-        String botao = request.getParameter("botao");
-        
+        String botao = request.getParameter("button");
         switch (botao) {
             case "cadastrar":
-                String nomeCategoria = request.getParameter("nomeCategoria");
-                conexao.criarCategoria(nomeCategoria);
+                conexao.criarCategoria(request.getParameter("atividade"));
                 break;
             case "atualizar":
                 {
@@ -40,7 +34,7 @@ public class CategoriaController extends HttpServlet {
                     break;
                 }
         }
-        response.sendRedirect("/autenticado/categoria.jsp");
+        response.sendRedirect("categoria.jsp");
         
         conexao.Fechar();
     }
