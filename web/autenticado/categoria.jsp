@@ -1,4 +1,7 @@
+<%@page import="Model.Categoria"%>
+<%@page import="Controller.MySqlController"%>
 <body>
+    <% MySqlController conexao = new MySqlController(); %>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
         <div id="page-wrapper">
@@ -17,7 +20,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Cadastrar categoria:</label>  
                             <div class="col-md-5">
-                                <input id="cadastrar" name="atividade" placeholder="Insira o nome da categoria" class="form-control input-md" required="" type="text">
+                                <input id="cadastrar" name="cadastrar" placeholder="Insira o nome da categoria" class="form-control input-md" required="" type="text">
                             </div>
                         </div>
 
@@ -35,17 +38,22 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="alterarCombo">Alterar categoria:</label>
                             <div class="col-md-5">
-                                <select id="removerCombo" name="alterarCombo" class="form-control">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
+                                <select id="alterarCombo" name="alterarCombo" class="form-control">
+                                    <%
+                                        
+                                    for (Categoria cat : conexao.carregaCategorias()) {
+                                    %>
+                                    <option value="<%=cat.getCodigo()%>"><%=cat.getNome()%></option>
+                                    <%}%>
                                 </select>
+                                <input id="novoNome" name="novoNome" placeholder="Insira o novo nome" class="form-control input-md" required="" type="text">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="alterar"></label>
                             <div class="col-md-4">
-                                <button id="alterar" name="button" value="atualizar" class="btn btn-primary">Alterar</button>
+                                <button id="alterar" name="button" value="alterar" class="btn btn-primary">Alterar</button>
                             </div>
                         </div>
                     </fieldset>
@@ -57,8 +65,11 @@
                             <label class="col-md-4 control-label" for="removerCombo">Remover categoria:</label>
                             <div class="col-md-5">
                                 <select id="removerCombo" name="removerCombo" class="form-control">
-                                    <option value="1">Option one</option>
-                                    <option value="2">Option two</option>
+                                    <%                                         
+                                    for (Categoria cat : conexao.carregaCategorias()) {
+                                    %>
+                                    <option value="<%=cat.getCodigo()%>"><%=cat.getNome()%></option>
+                                    <%}%>
                                 </select>
                             </div>
                         </div>
@@ -75,4 +86,5 @@
 
         </div>
     </div>
+<% conexao.Fechar(); %>
 </body>
