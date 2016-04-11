@@ -12,25 +12,25 @@ public class CategoriaController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException {      
         
         MySqlController conexao = new MySqlController();
         String botao = request.getParameter("button");
         switch (botao) {
             case "cadastrar":
-                conexao.criarCategoria(request.getParameter("atividade"));
+                conexao.criarCategoria(request.getParameter("cadastrar"));                
                 break;
-            case "atualizar":
+            case "alterar":
                 { // ARRUMAR OS PARÂMETROS P/ COMBO BOX
                     String novoNome = request.getParameter("novoNome");
-                    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
+                    int codCategoria = Integer.parseInt(request.getParameter("alterarCombo"));
                     conexao.atualizaCategoria(novoNome, codCategoria);
                     break;
                 }
             case "remover":
-                { // ARRUMAR OS PARÂMETROS P/ COMBO BOX
-                    int codCategoria = Integer.parseInt(request.getParameter("codCategoria"));
-                    conexao.removerCategoria(codCategoria);
+                { // ARRUMAR OS PARÂMETROS P/ COMBO BOX                    
+                    int codCategoria = Integer.parseInt(request.getParameter("removerCombo"));
+                    conexao.removerCategoria(codCategoria);                    
                     break;
                 }
         }

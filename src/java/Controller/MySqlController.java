@@ -23,7 +23,7 @@ public class MySqlController {
             String mydatabase = "deliverit"; //transtass1
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
             String username = "root"; //transtassi1
-            String password = "TheGodfather2"; //agorasim0
+            String password = "177013aew"; //agorasim0
             conn = (Connection) DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException ex) {
@@ -77,7 +77,7 @@ public class MySqlController {
         PreparedStatement stmt;
         ResultSet rs;
         int i = 0;
-        String query = "SELECT COUNT(*) FROM categoria";
+        String query = "SELECT COUNT(*) FROM cad_categoria";
 
         try {
             stmt = conn.prepareStatement(query);
@@ -91,7 +91,7 @@ public class MySqlController {
             Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        query = "SELECT * FROM categoria";
+        query = "SELECT * FROM cad_categoria";
         try {
             stmt = conn.prepareStatement(query);
             rs = stmt.executeQuery();
@@ -109,7 +109,7 @@ public class MySqlController {
 
     public void atualizaCategoria(String novoNome, int codigoCategoria) { //UPDATE
         try {
-            String instrucao = "UPDATE `categoria` SET `nomeCategoria`= '" + novoNome + "' WHERE codCategoria = '" + codigoCategoria + "'";
+            String instrucao = "UPDATE `cad_categoria` SET `nomeCategoria`= '" + novoNome + "' WHERE codCategoria = '" + codigoCategoria + "'";
             PreparedStatement stmt;
 
             stmt = conn.prepareStatement(instrucao);
@@ -122,7 +122,7 @@ public class MySqlController {
     public void criarCategoria(String nomeCategoria) { //CREATE
         try {
             PreparedStatement stmt = conn
-                    .prepareStatement("INSERT INTO categoria(nomeCategoria) VALUES ('" + nomeCategoria + "')");
+                    .prepareStatement("INSERT INTO cad_categoria(nomeCategoria) VALUES ('" + nomeCategoria + "')");
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class MySqlController {
     public void removerCategoria(int codCategoria) { //DELETE
         try {
             PreparedStatement preparedStatement = conn
-                    .prepareStatement("DELETE FROM categoria WHERE codCategoria= " + codCategoria);
+                    .prepareStatement("DELETE FROM cad_categoria WHERE codCategoria= " + codCategoria);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
