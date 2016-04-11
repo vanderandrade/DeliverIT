@@ -1,7 +1,9 @@
 <%@page import="Model.Categoria"%>
 <%@page import="Controller.MySqlController"%>
 <body>
-    <% MySqlController conexao = new MySqlController(); %>
+    <% MySqlController conexao = new MySqlController(); 
+        Categoria listaCategorias[] = conexao.carregaCategorias();
+    %>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
         <div id="page-wrapper">
@@ -41,7 +43,7 @@
                                 <select id="alterarCombo" name="alterarCombo" class="form-control">
                                     <%
                                         
-                                    for (Categoria cat : conexao.carregaCategorias()) {
+                                    for (Categoria cat : listaCategorias) {
                                     %>
                                     <option value="<%=cat.getCodigo()%>"><%=cat.getNome()%></option>
                                     <%}%>
@@ -66,7 +68,7 @@
                             <div class="col-md-5">
                                 <select id="removerCombo" name="removerCombo" class="form-control">
                                     <%                                         
-                                    for (Categoria cat : conexao.carregaCategorias()) {
+                                    for (Categoria cat : listaCategorias) {
                                     %>
                                     <option value="<%=cat.getCodigo()%>"><%=cat.getNome()%></option>
                                     <%}%>
