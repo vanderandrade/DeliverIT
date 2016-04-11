@@ -20,7 +20,7 @@
     <body>
         <div class="container">            
             <form class="form-login" method="post" action="LoginController">
-                <h2 class="form-login-heading">DeliveryIT!</h2>                
+                <h2 class="form-login-heading">Deliver IT!</h2>                
                     <label for="inputUsuario" class="sr-only">Nome do Usuário</label>
                     <input name="usuario" type="usuario" id="inputUsuario" class="form-control" placeholder="Nome do Usuário" required autofocus>
                     <label for="inputSenha" class="sr-only">Senha</label>

@@ -22,9 +22,7 @@ public class LoginController extends HttpServlet {
         MySqlController conexao = new MySqlController();
         
         if(conexao.CheckLogin(usuario, senha))
-        //if(usuario.equals("destaque") && senha.equals("1234"))
-        {
-            //request.getRequestDispatcher("/build/web/autenticado/index.jsp").forward(request, response);        
+        {       
             HttpSession session = request.getSession();
             session.setAttribute("usuario",conexao.getUsu().getName());            
             session.setAttribute("tipo",conexao.getUsu().getTipo());
