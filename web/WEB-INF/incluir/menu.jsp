@@ -50,7 +50,7 @@ if(session.getAttribute("usuario")==null)
                             <a href="categoria.jsp">Categoria de Produtos</a>
                         </li>
                         <li>
-                            <a href="#">Produtos</a>
+                            <a href="produto.jsp">Produtos</a>
                         </li>
                         <li>
                             <a href="#">Descontos</a>
