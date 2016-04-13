@@ -19,10 +19,15 @@
 
         <!-- Custom Fonts -->
         <link href="../resources/bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- jQuery -->
+        <script src="../resources/bootstrap/js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+        <!-- RowSorter -->
+        <script src="../resources/bootstrap/js/RowSorter.js"></script>
     </head>
-    <% 
-    if(session.getAttribute("usuario")==null)
-    {
-        response.sendRedirect("../index.jsp");
-    }
+    <%
+        if (session.getAttribute("usuario") == null) {
+            response.sendRedirect("../index.jsp");
+        }
     %>

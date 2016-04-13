@@ -38,10 +38,7 @@ if(session.getAttribute("usuario")==null)
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="index.jsp"><i class="fa fa-fw fa-dashboard"></i> Início</a>
-                </li>
-                <li>
-                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
+                    <a href="index.jsp"><i class="fa fa-fw fa-table"></i> Pedidos</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#cad"><i class="fa fa-fw fa-arrows-v"></i> Cadastro<i class="fa fa-fw fa-caret-down"></i></a>
@@ -58,7 +55,11 @@ if(session.getAttribute("usuario")==null)
                     </ul>
                 </li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Gerenciamento de Pedidos</a>
+                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
+                </li>
+                
+                <li>
+                    <a href="tables.html"><i class="fa fa-fw fa-dashboard"></i> ITEM</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#reg"><i class="fa fa-fw fa-edit"></i> Regras de Negócios<i class="fa fa-fw fa-caret-down"></i></a>
