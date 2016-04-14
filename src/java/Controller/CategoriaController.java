@@ -35,7 +35,7 @@ public class CategoriaController extends HttpServlet {
                 }
         }
         response.sendRedirect("categoria.jsp");
-        
+
         conexao.Fechar();
     }
 }

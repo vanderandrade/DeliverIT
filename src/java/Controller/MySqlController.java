@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Usuario;
 import Model.Categoria;
+import Model.Produto;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -71,6 +72,26 @@ public class MySqlController {
         return usu;
     }
 
+    public String consultaCategoria(int codCategoria) {
+
+        String query = "SELECT nomeCategoria FROM cad_categoria WHERE codCategoria='" + codCategoria + "'";
+        PreparedStatement stmt;
+        try {
+            stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            rs.next();
+            String nome = rs.getString("nomeCategoria");
+            stmt.close();
+            return nome;
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "null";
+        
+    }
+
     public Categoria[] carregaCategorias() {
 
         Categoria retorno[] = new Categoria[1];
@@ -87,8 +108,10 @@ public class MySqlController {
 
             retorno = new Categoria[rs.getInt(1)];
             stmt.close();
+
         } catch (SQLException ex) {
-            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
 
         query = "SELECT * FROM cad_categoria";
@@ -101,8 +124,10 @@ public class MySqlController {
                 i++;
             }
             stmt.close();
+
         } catch (SQLException ex) {
-            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return retorno;
     }
@@ -134,6 +159,84 @@ public class MySqlController {
             PreparedStatement preparedStatement = conn
                     .prepareStatement("DELETE FROM cad_categoria WHERE codCategoria= " + codCategoria);
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cadastrarProduto(Produto produto) {
+        try {
+            System.out.println("INSERT INTO cad_produto(nomeProduto,precoProduto,qtdEstoque,codCategoria) VALUES "
+                            + "('" + produto.getNomeProduto() + "','" + produto.getPrecoProduto() + "','" + produto.getQtdEstoque() + "','" + produto.getCodCategoria() + "')");
+            
+            PreparedStatement stmt = conn
+                    .prepareStatement("INSERT INTO cad_produto(nomeProduto,precoProduto,qtdEstoque,codCategoria) VALUES "
+                            + "('" + produto.getNomeProduto() + "','" + produto.getPrecoProduto() + "','" + produto.getQtdEstoque() + "','" + produto.getCodCategoria() + "')");
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Produto[] carregaProduto() {
+
+        Produto retorno[] = new Produto[1];
+        PreparedStatement stmt;
+        ResultSet rs;
+        int i = 0;
+        String query = "SELECT COUNT(*) FROM cad_produto";
+
+        try {
+            stmt = conn.prepareStatement(query);
+            rs = stmt.executeQuery();
+
+            rs.next();
+
+            retorno = new Produto[rs.getInt(1)];
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+
+        query = "SELECT * FROM cad_produto";
+        try {
+            stmt = conn.prepareStatement(query);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                retorno[i] = new Produto(rs.getInt("codProduto"), rs.getString("nomeProduto"), rs.getInt("qtdEstoque"), rs.getFloat("precoProduto"), rs.getInt("codCategoria"));
+                i++;
+            }
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+    
+    public void removerProduto(int codProduto) { //DELETE
+        try {
+            PreparedStatement preparedStatement = conn
+                    .prepareStatement("DELETE FROM cad_produto WHERE codProduto= " + codProduto);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+      public void atualizaProduto(Produto produto) { //UPDATE
+        try {
+            String instrucao = "UPDATE `cad_produto` SET `nomeProduto`= '" + produto.getNomeProduto() + "', precoProduto='"+produto.getPrecoProduto()+"'"
+                    + ",qtdEstoque='"+produto.getQtdEstoque()+"', codCategoria='"+produto.getCodCategoria()+"' WHERE codProduto = '" + produto.getCodProduto() + "'";
+            PreparedStatement stmt;
+
+            stmt = conn.prepareStatement(instrucao);
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
