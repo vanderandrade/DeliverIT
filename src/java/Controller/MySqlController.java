@@ -37,11 +37,21 @@ public class MySqlController {
 
     public void Fechar() {
         try {
-            conn.close();
+            conn.close();            
             conn = null;
         } catch (SQLException ex) {
             Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public boolean isValid()
+    {
+        boolean value = false;        
+        try {
+            value = conn.isValid(0);
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return value;
     }
 
     public boolean CheckLogin(String usuario, String senha) {

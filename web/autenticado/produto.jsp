@@ -3,8 +3,7 @@
 <%@page import="Model.Categoria"%>
 <%@page import="Controller.MySqlController"%>
 <body>
-    <% MySqlController conexao = new MySqlController();
-        Categoria listaCategorias[] = conexao.carregaCategorias();
+    <%        Categoria listaCategorias[] = conexao.carregaCategorias();
         Produto listaProduto[] = conexao.carregaProduto();
     %>
     <div id="wrapper">
@@ -60,12 +59,10 @@
                                 <label class="col-md-4 control-label" for="quantidadeProduto">Quantidade</label>  
                                 <div class="col-md-4">
                                     <input id="quantidadeProduto" name="quantidadeProduto" placeholder="Digite a quantidade em estoque" class="form-control input-md" required="" type="text">
+                                </div>
+                            </div>                            
 
-                                </div>    
-
-                            </div>
-
-                            <div class="col-md-4 ">   
+                            <div class="control-label col-md-6">   
                                 <button id="cadastrar" name="button" value="cadastrar" class="btn btn-primary">Cadastrar</button>
                             </div>
                         </fieldset>
@@ -108,7 +105,6 @@
             </div>
 
         </div>
-    </div>
-    <% conexao.Fechar();%>
+    </div>    
 </body>
 

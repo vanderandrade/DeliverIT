@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("usuario",conexao.getUsu().getName());            
             session.setAttribute("tipo",conexao.getUsu().getTipo());
-            
+            session.setAttribute("conexao", conexao);
             session.setMaxInactiveInterval(10*60); // 10 minutos de inatividade
                     
             response.sendRedirect("autenticado/index.jsp");
@@ -36,8 +36,7 @@ public class LoginController extends HttpServlet {
             out.println("<center><font color=red>Usuário ou senha inválidos!</font></center>");
             rd.include(request, response);
         }        
-        
-        conexao.Fechar();
+                
     }
 
 }

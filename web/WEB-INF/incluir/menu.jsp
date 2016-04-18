@@ -1,10 +1,3 @@
-<%
-String Usuario = null;
-if(session.getAttribute("usuario")==null)
-{
-    response.sendRedirect("/index.jsp");
-}else Usuario = (String) session.getAttribute("usuario");
-%>
 <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,7 +14,7 @@ if(session.getAttribute("usuario")==null)
         <ul class="nav navbar-right top-nav">
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%=Usuario %> <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%=session.getAttribute("usuario")%> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
 
                     <li>
@@ -38,7 +31,7 @@ if(session.getAttribute("usuario")==null)
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li class="active">
-                    <a href="index.jsp"><i class="fa fa-fw fa-table"></i> Pedidos</a>
+                    <a href="index.jsp"><i class="fa fa-fw fa-desktop"></i> Pedidos</a>
                 </li>
                 <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#cad"><i class="fa fa-fw fa-arrows-v"></i> Cadastro<i class="fa fa-fw fa-caret-down"></i></a>
@@ -59,9 +52,6 @@ if(session.getAttribute("usuario")==null)
                 </li>
                 
                 <li>
-                    <a href="tables.html"><i class="fa fa-fw fa-dashboard"></i> ITEM</a>
-                </li>
-                <li>
                     <a href="javascript:;" data-toggle="collapse" data-target="#reg"><i class="fa fa-fw fa-edit"></i> Regras de Negócios<i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="reg" class="collapse">
                         <li>
@@ -70,17 +60,12 @@ if(session.getAttribute("usuario")==null)
                     </ul>
                 </li>
                 <li>
-                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Dados de Pedido/Entrega</a>
-                </li>
-                <li>
                     <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
                 </li>                    
                 <li>
                     <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> ITEM</a>
                 </li>
-                <li>
-                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> ITEM</a>
-                </li>
+          
             </ul>
         </div>
         <!-- /.navbar-collapse -->

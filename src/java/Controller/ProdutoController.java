@@ -7,13 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class ProdutoController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MySqlController conexao = new MySqlController();
+        HttpSession session = request.getSession();
+        MySqlController conexao = (MySqlController) session.getAttribute("conexao");
 
         switch (request.getParameter("action")) {
 
@@ -38,7 +40,8 @@ public class ProdutoController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MySqlController conexao = new MySqlController();
+        HttpSession session = request.getSession();
+        MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         Produto produto;
         switch (request.getParameter("button")) {
             case "cadastrar":
@@ -55,8 +58,7 @@ public class ProdutoController extends HttpServlet {
                 response.sendRedirect("produto.jsp");
                 break;
                 
-        }
-        conexao.Fechar();
+        }        
     }
 
 }

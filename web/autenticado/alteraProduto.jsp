@@ -1,9 +1,8 @@
 <%@page import="Model.Produto"%>
-<%@page import="Model.Produto"%>
 <%@page import="Model.Categoria"%>
 <%@page import="Controller.MySqlController"%>
 <body>
-    <% MySqlController conexao = new MySqlController();
+    <% MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         Categoria listaCategorias[] = conexao.carregaCategorias();        
     %>
     <div id="wrapper">
@@ -79,7 +78,6 @@
             </div>
 
         </div>
-    </div>
-    <% conexao.Fechar();%>
+    </div>    
 </body>
 
