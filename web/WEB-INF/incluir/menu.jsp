@@ -30,7 +30,7 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li class="active">
+                <li>
                     <a href="index.jsp"><i class="fa fa-fw fa-desktop"></i> Pedidos</a>
                 </li>
                 <li>
@@ -48,25 +48,20 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
-                </li>
-                
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#reg"><i class="fa fa-fw fa-edit"></i> Regras de Negócios<i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="reg" class="collapse">
-                        <li>
-                            <a href="#">Descontos Condicionais</a>
-                        </li>
-                    </ul>
+                    <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
                 </li>
                 <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
+                    <a href="#"><i class="fa fa-fw fa-edit"></i> Regras de Negócio</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
                 </li>                    
                 <li>
-                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> ITEM</a>
+                    <a href="#"><i class="fa fa-fw fa-file"></i> ITEM</a>
                 </li>
           
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </nav>
+               

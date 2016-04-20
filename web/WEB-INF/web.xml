@@ -8,6 +8,10 @@
         <servlet-name>ProdutoController</servlet-name>
         <servlet-class>Controller.ProdutoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PedidoController</servlet-name>
+        <servlet-class>Controller.PedidoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/autenticado/LogoutController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ProdutoController</servlet-name>
         <url-pattern>/autenticado/ProdutoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PedidoController</servlet-name>
+        <url-pattern>/autenticado/PedidoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

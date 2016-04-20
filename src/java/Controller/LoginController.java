@@ -42,7 +42,7 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("usuario",logindao.getUsu().getName());
                 session.setAttribute("tipo",logindao.getUsu().getTipo());
                 session.setAttribute("conexao", conexao);
-                session.setMaxInactiveInterval(10*60); // 10 minutos de inatividade                
+                session.setMaxInactiveInterval(20*60); // 20 minutos de inatividade                
                 response.sendRedirect("autenticado/index.jsp");
             }else{
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");                

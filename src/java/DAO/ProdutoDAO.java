@@ -9,17 +9,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ProdutoDAO {
+
     private MySqlController conn;
-    
-    public ProdutoDAO(MySqlController conexao)
-    {
+
+    public ProdutoDAO(MySqlController conexao) {
         conn = conexao;
     }
+
     public void cadastrarProduto(Produto produto) {
         try {
             System.out.println("INSERT INTO cad_produto(nomeProduto,precoProduto,qtdEstoque,codCategoria) VALUES "
-                            + "('" + produto.getNomeProduto() + "','" + produto.getPrecoProduto() + "','" + produto.getQtdEstoque() + "','" + produto.getCodCategoria() + "')");
-            
+                    + "('" + produto.getNomeProduto() + "','" + produto.getPrecoProduto() + "','" + produto.getQtdEstoque() + "','" + produto.getCodCategoria() + "')");
+
             PreparedStatement stmt = conn.getConn()
                     .prepareStatement("INSERT INTO cad_produto(nomeProduto,precoProduto,qtdEstoque,codCategoria) VALUES "
                             + "('" + produto.getNomeProduto() + "','" + produto.getPrecoProduto() + "','" + produto.getQtdEstoque() + "','" + produto.getCodCategoria() + "')");
@@ -28,6 +29,25 @@ public class ProdutoDAO {
             e.printStackTrace();
         }
 
+    }
+
+    public String consultaNomeProduto(int codProduto) {
+
+        String query = "SELECT nomeProduto FROM cad_produto WHERE codProduto='" + codProduto + "'";
+        PreparedStatement stmt;
+        try {
+            stmt = conn.getConn().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            rs.next();
+            String nome = rs.getString("nomeProduto");
+            stmt.close();
+            return nome;
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "null";
     }
 
     public Produto[] carregaProduto() {
@@ -69,7 +89,7 @@ public class ProdutoDAO {
         }
         return retorno;
     }
-    
+
     public void removerProduto(int codProduto) { //DELETE
         try {
             PreparedStatement preparedStatement = conn.getConn()
@@ -79,17 +99,17 @@ public class ProdutoDAO {
             e.printStackTrace();
         }
     }
-    
-      public void atualizaProduto(Produto produto) { //UPDATE
+
+    public void atualizaProduto(Produto produto) { //UPDATE
         try {
-            String instrucao = "UPDATE `cad_produto` SET `nomeProduto`= '" + produto.getNomeProduto() + "', precoProduto='"+produto.getPrecoProduto()+"'"
-                    + ",qtdEstoque='"+produto.getQtdEstoque()+"', codCategoria='"+produto.getCodCategoria()+"' WHERE codProduto = '" + produto.getCodProduto() + "'";
+            String instrucao = "UPDATE `cad_produto` SET `nomeProduto`= '" + produto.getNomeProduto() + "', precoProduto='" + produto.getPrecoProduto() + "'"
+                    + ",qtdEstoque='" + produto.getQtdEstoque() + "', codCategoria='" + produto.getCodCategoria() + "' WHERE codProduto = '" + produto.getCodProduto() + "'";
             PreparedStatement stmt;
-            System.out.println("Instrucao: "+ instrucao);
+            System.out.println("Instrucao: " + instrucao);
             stmt = conn.getConn().prepareStatement(instrucao);
             stmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("ERRO NO UPDATE" );
+            System.out.println("ERRO NO UPDATE");
         }
     }
 }
