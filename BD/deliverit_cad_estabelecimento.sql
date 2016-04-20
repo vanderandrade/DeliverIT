@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `deliveryit` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `deliveryit`;
+CREATE DATABASE  IF NOT EXISTS `deliverit` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `deliverit`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: localhost    Database: deliveryit
+-- Host: localhost    Database: deliverit
 -- ------------------------------------------------------
 -- Server version	5.7.10-log
 
@@ -18,30 +18,27 @@ USE `deliveryit`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cad_funcionario`
+-- Table structure for table `cad_estabelecimento`
 --
 
-DROP TABLE IF EXISTS `cad_funcionario`;
+DROP TABLE IF EXISTS `cad_estabelecimento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cad_funcionario` (
-  `idFuncionario` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `tipoFuncionario` int(11) NOT NULL,
-  `nomeFuncionario` varchar(45) NOT NULL,
-  PRIMARY KEY (`idFuncionario`)
+CREATE TABLE `cad_estabelecimento` (
+  `codEstabelecimento` int(11) NOT NULL AUTO_INCREMENT,
+  `enderecoEstabelecimento` varchar(200) NOT NULL,
+  PRIMARY KEY (`codEstabelecimento`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cad_funcionario`
+-- Dumping data for table `cad_estabelecimento`
 --
 
-LOCK TABLES `cad_funcionario` WRITE;
-/*!40000 ALTER TABLE `cad_funcionario` DISABLE KEYS */;
-INSERT INTO `cad_funcionario` VALUES (1,'leonardo','1234',0,'Leonardo Dias');
-/*!40000 ALTER TABLE `cad_funcionario` ENABLE KEYS */;
+LOCK TABLES `cad_estabelecimento` WRITE;
+/*!40000 ALTER TABLE `cad_estabelecimento` DISABLE KEYS */;
+INSERT INTO `cad_estabelecimento` VALUES (1,'Avenida Joao Pinheiro 2000, Pocos de Caldas MG');
+/*!40000 ALTER TABLE `cad_estabelecimento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-05 14:16:11
+-- Dump completed on 2016-04-20 15:13:44
