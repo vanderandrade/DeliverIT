@@ -13,6 +13,8 @@ public class LogoutController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        MySqlController conexao = (MySqlController) session.getAttribute("conexao");
+        conexao.Fechar();
         session.invalidate();
 
         response.sendRedirect("../index.jsp");

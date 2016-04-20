@@ -1,3 +1,4 @@
+<%@page import="Controller.MySqlController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,10 +24,15 @@
         <script src="../resources/bootstrap/js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+        
+        <!-- Organizador de Tabelas -->
+        <script src="../resources/bootstrap/js/RowSorter.js"></script>
+        
+        
 
     </head>
-    <%
-        if (session.getAttribute("usuario") == null) {
+    <%              
+        if (session.getAttribute("usuario") == null){
             response.sendRedirect("../index.jsp");
-        }
+        }        
     %>
