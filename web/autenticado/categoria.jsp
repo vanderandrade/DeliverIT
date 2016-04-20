@@ -71,5 +71,7 @@
              
         </div>
     </div>
-
+    <script>
+        $('.collapse').collapse()
+    </script>
 </body>

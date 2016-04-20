@@ -4,7 +4,7 @@
 
 <body>
     <%  CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
-        Categoria listaCategorias[] = categoriadao.carregaCategorias();        
+        Categoria listaCategorias[] = categoriadao.carregaCategorias();
     %>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
@@ -24,7 +24,7 @@
                                 <label class="col-md-4 control-label" for="nomeProduto">Nome do Produto</label>  
                                 <div class="col-md-4">                                                                   
                                     <input id="nomeProduto" name="nomeProduto" placeholder="Digite o nome do produto" class="form-control input-md" required="" type="text" value="<%=request.getAttribute("nomeProduto")%>">
-                                    
+
                                 </div>
                             </div>
 
@@ -70,15 +70,14 @@
                                 <a href="produto.jsp" class="btn btn-success">Voltar</a>
                             </div>
                         </fieldset>
-                    </form>
-                   
-
-
-
+                    </form>                   
                 </div>
             </div>
 
         </div>
     </div>    
+    <script>
+        $('.collapse').collapse()
+    </script>
 </body>
 

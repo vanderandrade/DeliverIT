@@ -1,3 +1,10 @@
+<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.PedidoDAO"%>
+<%@page import="Model.Pedido"%>
+<%    ClienteDAO clientedao = new ClienteDAO((MySqlController) session.getAttribute("conexao"));
+    PedidoDAO pedidodao = new PedidoDAO((MySqlController) session.getAttribute("conexao"));
+    Pedido listaPedidos[] = pedidodao.carregaPedidos();
+%>
 <body>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
@@ -6,8 +13,8 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-10">
-                        <h1 class="page-header">
-                            Monitoramento dos Pedidos <small>-</small>
+                        <h1 class="text-center page-header">
+                            <i class="fa fa-desktop"></i>  Monitoramento dos Pedidos
                         </h1>
                     </div>
                 </div>
@@ -30,55 +37,78 @@
                                 <th>Horario </th>
                                 <th>Valor Total </th>
                                 <th>Status </th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
+                            <% for (Pedido pedido : listaPedidos) {
+                            %>
                             <tr>
-                                <td>0001</td>
-                                <td>Produto Exemplo</td>
+                                <td><%=pedido.getCodPedido()%></td>
+                                <td><%=clientedao.consultaCliente(pedido.getCodCliente())%></td>
                                 <td><!-- Trigger the modal with a button -->
-                                    <button autofocus="true" type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#listarModal">Exibir</button>
+                                    <button autofocus="true" type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#listarModal<%=pedido.getCodPedido()%>">Exibir</button>
                                 </td>
-                                <td>7:45</td>
-                                <td>R$ 100,00</td>
-                                <td><button autofocus="true" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#listarModal">Alterar</button></td>
+                                <td><%=pedido.getDataPedido()%></td>
+                                <td>R$ <%=pedido.getValorTotal()%></td>
+                                <td><button autofocus="true" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#alterarModal"><%=pedido.getStatusPedido()%></button></td>
                             </tr>
-                            <tr>
-                                <td>0002</td>
-                                <td>Produto Exemplo 2</td>
-                                <td><button type="button" class="btn btn-info btn-block" data-toggle="modal" data-target="#listarModal">Exibir</button></td>
-                                <td>8:00</td>
-                                <td>R$ 100,00</td>
-                                <td><button autofocus="true" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#listarModal">Alterar</button></td>
-                            
-                            </tr>
-                   
+
+
+                        <div id="listarModal<%=pedido.getCodPedido()%>" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Produtos - Pedido Nº <%=pedido.getCodPedido()%></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <% String listaProdutos[] = pedidodao.carregaItemPedido(pedido.getCodPedido());
+                                            for (String prod : listaProdutos) {%>
+                                        <p><%=prod%></p>
+                                        <%}%>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <%}%>
+                        <div id="alterarModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Alterar Status do Pedido</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="form-horizontal" method="post" action="PedidoController">
+                                            <select id="alterarCombo" name="alterarCombo" class="form-control">
+                                                <option value="criado">Criado</option>
+                                                <option value="processando">Processando</option>
+                                                <option value="enviado">Enviado</option>
+                                                <option value="fechado">Fechado</option>
+                                            </select>
+                                            <input type="hidden" name="codPedido" value="">
+                                            <div class="btn center-block">
+                                            <button id="alterar" name="button" value="alterar" class="btn btn-primary">Alterar Status</button>
+                                            </div>
+                                        </form>           
+                                        
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </tbody>
 
                     </table>
 
-                    <!-- Modal -->
-                    <div id="listarModal" class="modal fade" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Produtos</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Produto 1</p>
-                                    <p>Produto 1</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
                     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     <script type="text/javascript">
                         RowSorter("#tabelaPedidos");

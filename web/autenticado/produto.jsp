@@ -4,8 +4,7 @@
 <%@page import="Model.Categoria"%>
 
 <body>
-    <%        
-        CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
+    <%        CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
         ProdutoDAO produtodao = new ProdutoDAO((MySqlController) session.getAttribute("conexao"));
         Categoria listaCategorias[] = categoriadao.carregaCategorias();
         Produto listaProduto[] = produtodao.carregaProduto();
@@ -65,7 +64,7 @@
                                     <input id="quantidadeProduto" name="quantidadeProduto" placeholder="Digite a quantidade em estoque" class="form-control input-md" required="" type="text">
                                 </div>
                             </div> 
-                            
+
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Imagem do produto 300x180</label>  
                                 <div class="input-group col-md-4">
@@ -99,23 +98,14 @@
                         <a href="ProdutoController?action=Alterar&codProduto=<%=prod.getCodProduto()%>&nomeProduto=<%=prod.getNomeProduto()%>&precoProduto=<%=prod.getPrecoProduto()%>&quantidadeProduto=<%=prod.getQtdEstoque()%>&categoriaProduto=<%=prod.getCodCategoria()%>" class="btn btn-success">Alterar</a>
 
                         <a href="ProdutoController?action=Excluir&codProduto=<%=prod.getCodProduto()%>" class="btn btn-danger">Excluir</a>
-
-
-
-
                     </div>
-
-
                     <%}%>
-
-
-
-
-
                 </div>
             </div>
-
         </div>
-    </div>    
+    </div> 
+    <script>
+        $('.collapse').collapse()
+    </script>
 </body>
 
