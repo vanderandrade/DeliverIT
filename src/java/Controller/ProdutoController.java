@@ -1,5 +1,6 @@
 package Controller;
 
+import DAO.ProdutoDAO;
 import Model.Produto;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -16,11 +17,11 @@ public class ProdutoController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         MySqlController conexao = (MySqlController) session.getAttribute("conexao");
-
+        ProdutoDAO produtodao = new ProdutoDAO(conexao);
         switch (request.getParameter("action")) {
 
             case "Excluir":
-                conexao.removerProduto(Integer.parseInt(request.getParameter("codProduto")));
+                produtodao.removerProduto(Integer.parseInt(request.getParameter("codProduto")));
                 response.sendRedirect("produto.jsp");
                 break;
             case "Alterar":
@@ -33,8 +34,7 @@ public class ProdutoController extends HttpServlet {
                 rd.forward(request, response);
                 break;
         }
-
-        conexao.Fechar();
+        
     }
 
     @Override
@@ -43,18 +43,21 @@ public class ProdutoController extends HttpServlet {
         HttpSession session = request.getSession();
         MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         Produto produto;
+        ProdutoDAO produtodao = new ProdutoDAO(conexao);
+        
         switch (request.getParameter("button")) {
             case "cadastrar":
                 produto = new Produto(request.getParameter("nomeProduto"), Integer.parseInt(request.getParameter("quantidadeProduto")),
                         Float.parseFloat(request.getParameter("precoProduto")), Integer.parseInt(request.getParameter("categoriaProduto")));
-                conexao.cadastrarProduto(produto);
+                produtodao.cadastrarProduto(produto);
                 response.sendRedirect("produto.jsp");
                 break;
                 
             case "alterar":
                  produto = new Produto(Integer.parseInt(request.getParameter("codProduto")),request.getParameter("nomeProduto"), Integer.parseInt(request.getParameter("quantidadeProduto")),
                         Float.parseFloat(request.getParameter("precoProduto")), Integer.parseInt(request.getParameter("categoriaProduto")));
-                conexao.atualizaProduto(produto);
+                System.out.println("CodPROD: "+produto.getCodProduto() + " codcateg "+produto.getCodCategoria() + " preco prod " +produto.getPrecoProduto() + produto.getQtdEstoque() + produto.getNomeProduto()   );
+                produtodao.atualizaProduto(produto);
                 response.sendRedirect("produto.jsp");
                 break;
                 

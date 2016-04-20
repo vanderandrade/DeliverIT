@@ -1,9 +1,10 @@
+<%@page import="DAO.CategoriaDAO"%>
 <%@page import="Model.Produto"%>
 <%@page import="Model.Categoria"%>
-<%@page import="Controller.MySqlController"%>
+
 <body>
-    <% MySqlController conexao = (MySqlController) session.getAttribute("conexao");
-        Categoria listaCategorias[] = conexao.carregaCategorias();        
+    <%  CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
+        Categoria listaCategorias[] = categoriadao.carregaCategorias();        
     %>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />

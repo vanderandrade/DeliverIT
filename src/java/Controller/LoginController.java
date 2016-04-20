@@ -1,7 +1,11 @@
 package Controller;
 
+import DAO.LoginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,26 +20,38 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        MySqlController conexao = null;        
+        PrintWriter out = response.getWriter();
         
         String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
-        MySqlController conexao = new MySqlController();
-        
-        if(conexao.CheckLogin(usuario, senha))
-        {       
-            HttpSession session = request.getSession();
-            session.setAttribute("usuario",conexao.getUsu().getName());            
-            session.setAttribute("tipo",conexao.getUsu().getTipo());
-            session.setAttribute("conexao", conexao);
-            session.setMaxInactiveInterval(10*60); // 10 minutos de inatividade
-                    
-            response.sendRedirect("autenticado/index.jsp");
-        }else{
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<center><font color=red>Usuário ou senha inválidos!</font></center>");
-            rd.include(request, response);
-        }        
+        try{
+        conexao = new MySqlController();
+        }catch (SQLException sqle)
+        {
+        out.print("<script> alert('SEM CONEXÃO COM O BANCO!');</script>");
+        }catch(ClassNotFoundException cnfe)
+        {
+        out.print("<script> alert('SEM CONEXÃO COM O BANCO!');</script>");
+        }
+        LoginDAO logindao = new LoginDAO(conexao);
+        try {
+            if(conexao!=null && logindao.CheckLogin(usuario, senha))
+            {
+                HttpSession session = request.getSession();
+                session.setAttribute("usuario",logindao.getUsu().getName());
+                session.setAttribute("tipo",logindao.getUsu().getTipo());
+                session.setAttribute("conexao", conexao);
+                session.setMaxInactiveInterval(10*60); // 10 minutos de inatividade                
+                response.sendRedirect("autenticado/index.jsp");
+            }else{
+                RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");                
+                out.println("<div class='alert alert-danger'><p class='text-danger text-center'>Usuário ou senha inválidos!</p></div>");
+                rd.include(request, response);        
+            }
+        } catch (SQLException ex) {
+            out.print("<script> alert('SEM CONEXÃO COM O BANCO!');</script>");            
+        }
                 
     }
 

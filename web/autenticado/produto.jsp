@@ -1,10 +1,14 @@
-<%@page import="Model.Produto"%>
+<%@page import="DAO.ProdutoDAO"%>
+<%@page import="DAO.CategoriaDAO"%>
 <%@page import="Model.Produto"%>
 <%@page import="Model.Categoria"%>
-<%@page import="Controller.MySqlController"%>
+
 <body>
-    <%        Categoria listaCategorias[] = conexao.carregaCategorias();
-        Produto listaProduto[] = conexao.carregaProduto();
+    <%        
+        CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
+        ProdutoDAO produtodao = new ProdutoDAO((MySqlController) session.getAttribute("conexao"));
+        Categoria listaCategorias[] = categoriadao.carregaCategorias();
+        Produto listaProduto[] = produtodao.carregaProduto();
     %>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
@@ -60,7 +64,14 @@
                                 <div class="col-md-4">
                                     <input id="quantidadeProduto" name="quantidadeProduto" placeholder="Digite a quantidade em estoque" class="form-control input-md" required="" type="text">
                                 </div>
-                            </div>                            
+                            </div> 
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Imagem do produto 300x180</label>  
+                                <div class="input-group col-md-4">
+                                    <input id="imagemProduto" name="imagemProduto" class="file" required="" type="file">
+                                </div>
+                            </div>
 
                             <div class="control-label col-md-6">   
                                 <button id="cadastrar" name="button" value="cadastrar" class="btn btn-primary">Cadastrar</button>
@@ -79,7 +90,7 @@
                             <img class="img-responsive" src="http://placehold.it/300x180" alt="">
                         </a>
                         <h3>
-                            <%=prod.getNomeProduto()%> - <%=conexao.consultaCategoria(prod.getCodCategoria())%>
+                            <%=prod.getNomeProduto()%> - <%=categoriadao.consultaCategoria(prod.getCodCategoria())%>
                         </h3>
 
                         <p>Preço: <%=prod.getPrecoProduto()%></p>

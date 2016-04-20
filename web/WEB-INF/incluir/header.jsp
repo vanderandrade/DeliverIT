@@ -31,10 +31,8 @@
         
 
     </head>
-    <%
-        
-        MySqlController conexao = (MySqlController) session.getAttribute("conexao");
-        if (session.getAttribute("usuario") == null || !conexao.isValid()) {            
+    <%              
+        if (session.getAttribute("usuario") == null){
             response.sendRedirect("../index.jsp");
         }        
     %>
