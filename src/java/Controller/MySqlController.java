@@ -23,7 +23,7 @@ public class MySqlController {
             String mydatabase = "deliverit"; //transtass1
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
             String username = "root"; //transtassi1
-            String password = "177013aew"; //agorasim0
+            String password = "TheGodfather2"; //agorasim0
             conn = (Connection) DriverManager.getConnection(url, username, password);
 
     }
