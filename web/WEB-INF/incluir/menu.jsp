@@ -54,7 +54,7 @@
                     <a href="#"><i class="fa fa-fw fa-edit"></i> Regras de Negócio</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
+                    <a href="fluxoCaixa.jsp"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
                 </li>                    
                 <li>
                     <a href="#"><i class="fa fa-fw fa-file"></i> ITEM</a>
