@@ -1,7 +1,6 @@
-<%@page import="DAO.CategoriaDAO"%>
-<%@page import="Model.Produto"%>
-<%@page import="Model.Categoria"%>
 
+<%@page import="br.pucpcaldas.inf.lc.deliverit.model.Categoria"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.dao.CategoriaDAO"%>
 <body>
     <%  CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
         Categoria listaCategorias[] = categoriadao.carregaCategorias();

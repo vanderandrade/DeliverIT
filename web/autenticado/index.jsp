@@ -1,7 +1,8 @@
-<%@page import="DAO.ClienteDAO"%>
-<%@page import="DAO.PedidoDAO"%>
-<%@page import="Model.Pedido"%>
-<%    ClienteDAO clientedao = new ClienteDAO((MySqlController) session.getAttribute("conexao"));
+
+<%@page import="br.pucpcaldas.inf.lc.deliverit.model.Pedido"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.dao.PedidoDAO"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.dao.ClienteDAO"%>
+<%  ClienteDAO clientedao = new ClienteDAO((MySqlController) session.getAttribute("conexao"));
     PedidoDAO pedidodao = new PedidoDAO((MySqlController) session.getAttribute("conexao"));
     Pedido listaPedidos[] = pedidodao.carregaPedidos();
 %>
@@ -51,7 +52,7 @@
                                 </td>
                                 <td><%=pedido.getDataPedido()%></td>
                                 <td>R$ <%=pedido.getValorTotal()%></td>
-                                <td><button autofocus="true" type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#alterarModal"><%=pedido.getStatusPedido()%></button></td>
+                                <td><button autofocus="true" type="button" class="abrir-alterarModal btn btn-success btn-block" data-toggle="modal" data-target="#alterarModal" data-id="<%=pedido.getCodPedido()%>" ><%=pedido.getStatusPedido()%></button></td>
                             </tr>
 
 
@@ -87,17 +88,17 @@
                                     <div class="modal-body">
                                         <form class="form-horizontal" method="post" action="PedidoController">
                                             <select id="alterarCombo" name="alterarCombo" class="form-control">
-                                                <option value="criado">Criado</option>
-                                                <option value="processando">Processando</option>
-                                                <option value="enviado">Enviado</option>
-                                                <option value="fechado">Fechado</option>
-                                            </select>
-                                            <input type="hidden" name="codPedido" value="">
+                                                <option value="Criado">Criado</option>
+                                                <option value="Processando">Processando</option>
+                                                <option value="Enviado">Enviado</option>
+                                                <option value="Fechado">Fechado</option>
+                                            </select>                                            
+                                            <input type="hidden" name="codPedido" id="codPedido" value=""/>
                                             <div class="btn center-block">
-                                            <button id="alterar" name="button" value="alterar" class="btn btn-primary">Alterar Status</button>
+                                                <button id="alterar" name="button" value="alterar" class="btn btn-primary">Alterar Status</button>
                                             </div>
                                         </form>           
-                                        
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
@@ -111,6 +112,11 @@
 
                     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     <script type="text/javascript">
+                        
+                        $(document).on("click", ".abrir-alterarModal", function () {
+                            var codPedido = $(this).data('id');                            
+                            $(".modal-body #codPedido").val(codPedido);
+                        });
                         RowSorter("#tabelaPedidos");
                     </script>
 

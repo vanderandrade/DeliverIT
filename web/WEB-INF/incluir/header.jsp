@@ -1,4 +1,5 @@
-<%@page import="Controller.MySqlController"%>
+
+<%@page import="br.pucpcaldas.inf.lc.deliverit.controller.MySqlController"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-package Model;
+package br.pucpcaldas.inf.lc.deliverit.model;
 
 public class Produto {
     private int codProduto;

@@ -1,7 +1,6 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Categoria;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Produto;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Produto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +13,14 @@ public class ProdutoDAO {
     private MySqlController conn;
 
     public ProdutoDAO(MySqlController conexao) {
+        if(!conexao.isValid() || conexao==null)
+            try {
+                conn = new MySqlController();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         conn = conexao;
     }
 

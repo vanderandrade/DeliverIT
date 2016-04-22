@@ -1,7 +1,7 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Categoria;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Categoria;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +13,14 @@ public class CategoriaDAO {
     
     public CategoriaDAO(MySqlController conexao)
     {
+             if(!conexao.isValid() || conexao==null)
+            try {
+                conexao = new MySqlController();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.conn = conexao;
     }
     

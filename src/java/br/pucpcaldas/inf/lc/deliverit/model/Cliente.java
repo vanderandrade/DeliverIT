@@ -1,4 +1,4 @@
-package Model;
+package br.pucpcaldas.inf.lc.deliverit.model;
 public class Cliente {
     private int codCliente;
     private String nomeCliente;

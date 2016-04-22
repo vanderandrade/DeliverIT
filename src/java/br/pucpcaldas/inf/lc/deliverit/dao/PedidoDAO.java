@@ -1,7 +1,7 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Pedido;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Pedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,8 +11,16 @@ import java.util.logging.Logger;
 public class PedidoDAO {
     private MySqlController conn;
     
-    public PedidoDAO(MySqlController conexao)
+    public PedidoDAO(MySqlController conexao)            
     {
+        if(!conexao.isValid() || conexao==null)
+            try {
+                conexao = new MySqlController();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.conn = conexao;
     }
      public Pedido[] carregaPedidos() {

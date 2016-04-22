@@ -1,8 +1,8 @@
-package Controller;
+package br.pucpcaldas.inf.lc.deliverit.controller;
 
-import Model.Usuario;
-import Model.Categoria;
-import Model.Produto;
+import br.pucpcaldas.inf.lc.deliverit.model.Usuario;
+import br.pucpcaldas.inf.lc.deliverit.model.Categoria;
+import br.pucpcaldas.inf.lc.deliverit.model.Produto;
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
