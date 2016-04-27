@@ -40,16 +40,17 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("usuario",logindao.getUsu().getName());
                 session.setAttribute("tipo",logindao.getUsu().getTipo());
                 session.setAttribute("conexao", conexao);
-                session.setMaxInactiveInterval(20*60); // 20 minutos de inatividade                
+                session.setMaxInactiveInterval(60*60); // 60 minutos de inatividade                
                 response.sendRedirect("autenticado/index.jsp");
             }else{
                 RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");                
                 out.println("<div class='alert alert-danger'><p class='text-danger text-center'>Usuário ou senha inválidos!</p></div>");
                 rd.include(request, response);        
             }
-        } catch (SQLException ex) {
+        } catch (SQLException ex) {            
             out.print("<script> alert('SEM CONEXÃO COM O BANCO!');</script>");            
         }
+        
                 
     }
 

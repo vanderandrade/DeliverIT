@@ -8,12 +8,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ClienteDAO {
+
     public MySqlController conn;
-    
-    public ClienteDAO(MySqlController conexao)
-    {
+
+    public ClienteDAO(MySqlController conexao) {
+        if (!conexao.isValid() || conexao == null) {
+            try {
+                conexao = new MySqlController();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         this.conn = conexao;
     }
+
     public String consultaCliente(int codCliente) {
 
         String query = "SELECT nomeCliente FROM cad_cliente WHERE codCliente='" + codCliente + "'";

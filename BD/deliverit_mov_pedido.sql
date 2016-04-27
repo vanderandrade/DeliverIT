@@ -31,7 +31,7 @@ CREATE TABLE `mov_pedido` (
   `valorDesconto` float NOT NULL,
   `codCliente` int(11) NOT NULL,
   `codEstabelecimento` int(11) NOT NULL,
-  `dataPedido` varchar(16) NOT NULL,
+  `dataPedido` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `statusPedido` varchar(45) NOT NULL,
   PRIMARY KEY (`codPedido`),
   KEY `codCliente_idx` (`codCliente`),
@@ -47,7 +47,7 @@ CREATE TABLE `mov_pedido` (
 
 LOCK TABLES `mov_pedido` WRITE;
 /*!40000 ALTER TABLE `mov_pedido` DISABLE KEYS */;
-INSERT INTO `mov_pedido` VALUES (1,75.5,1.5,0,1,1,'13:00','Criado'),(2,89.45,2.5,0,1,1,'13:19','Criado'),(3,79.9,2.35,0,1,1,'14:15','Fechado');
+INSERT INTO `mov_pedido` VALUES (1,75.5,1.5,0,1,1,'2016-04-24 03:00:00','Criado'),(2,89.45,2.5,0,1,1,'2016-04-25 17:59:30','Criado'),(3,79.9,2.35,0,1,1,'2016-04-27 16:44:07','Processando');
 /*!40000 ALTER TABLE `mov_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-20 15:13:44
+-- Dump completed on 2016-04-27 14:30:40

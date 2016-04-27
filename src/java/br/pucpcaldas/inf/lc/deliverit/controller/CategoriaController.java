@@ -16,7 +16,6 @@ public class CategoriaController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-
         HttpSession session = request.getSession();
         MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         CategoriaDAO categoriadao = new CategoriaDAO(conexao);
@@ -25,13 +24,13 @@ public class CategoriaController extends HttpServlet {
             case "cadastrar":
                 categoriadao.criarCategoria(request.getParameter("cadastrar"));
                 break;
-            case "alterar": { // ARRUMAR OS PARÂMETROS P/ COMBO BOX
+            case "alterar": {
                 String novoNome = request.getParameter("novoNome");
                 int codCategoria = Integer.parseInt(request.getParameter("alterarCombo"));
                 categoriadao.atualizaCategoria(novoNome, codCategoria);
                 break;
             }
-            case "remover": { // ARRUMAR OS PARÂMETROS P/ COMBO BOX                    
+            case "remover": {                  
                 int codCategoria = Integer.parseInt(request.getParameter("alterarCombo"));
                 categoriadao.removerCategoria(codCategoria);
                 break;
