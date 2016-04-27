@@ -40,12 +40,12 @@ public class FluxoCaixaDAO {
         }
     }
 
-    public FluxoCaixa[] carregaRegistros() {
+    public FluxoCaixa[] carregaRegistros(String data) {
         FluxoCaixa retorno[] = new FluxoCaixa[1];
         PreparedStatement stmt;
         ResultSet rs;
         int i = 0;       
-        String query = "SELECT COUNT(*) FROM cad_fluxocaixa WHERE DATE(data) = CURDATE();";
+        String query = "SELECT COUNT(*) FROM cad_fluxocaixa WHERE DATE(data) ='"+data+"';";
 
         try {
             stmt = conn.getConn().prepareStatement(query);
@@ -61,7 +61,7 @@ public class FluxoCaixaDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         }
 
-        query = "SELECT * FROM cad_fluxocaixa WHERE DATE(data) = CURDATE() ORDER BY data DESC;";
+        query = "SELECT * FROM cad_fluxocaixa WHERE DATE(data) ='"+data+"' ORDER BY data DESC;";
         try {
             stmt = conn.getConn().prepareStatement(query);
             rs = stmt.executeQuery();
@@ -107,10 +107,11 @@ public class FluxoCaixaDAO {
             SimpleDateFormat sdf;           
 
             while (rs.next()) {
-                date = new Date(rs.getTimestamp("DATE(data)").getTime());
+                /*date = new Date(rs.getTimestamp("DATE(data)").getTime());
                 sdf = new SimpleDateFormat("dd/MM/yyyy");
                 sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-                retorno[i] = new String(sdf.format(date));
+                retorno[i] = new String(sdf.format(date));*/
+                retorno[i] = new String(rs.getString("DATE(data)"));
                 i++;
             }
             stmt.close();
