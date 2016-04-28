@@ -1,18 +1,28 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Usuario;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginDAO {
 
     private Usuario usu;
     private MySqlController conn;
-    
-    public LoginDAO(MySqlController conexao)
-    {
+
+    public LoginDAO(MySqlController conexao) {
+        if (!conexao.isValid() || conexao == null) {
+            try {
+                conexao = new MySqlController();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         conn = conexao;
     }
 
@@ -42,5 +52,4 @@ public class LoginDAO {
         return usu;
     }
 
-    
 }

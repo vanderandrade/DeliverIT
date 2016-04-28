@@ -1,7 +1,7 @@
-package DAO;
+package br.pucpcaldas.inf.lc.deliverit.dao;
 
-import Controller.MySqlController;
-import Model.Pedido;
+import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Pedido;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,19 +9,33 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PedidoDAO {
+
     private MySqlController conn;
-    
-    public PedidoDAO(MySqlController conexao)
-    {
+
+    public PedidoDAO(MySqlController conexao) {
+        if (!conexao.isValid() || conexao == null) {
+            try {
+                conexao = new MySqlController();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         this.conn = conexao;
     }
-     public Pedido[] carregaPedidos() {
 
+    public Pedido[] carregaPedidos(String status) {
         Pedido retorno[] = new Pedido[1];
         PreparedStatement stmt;
         ResultSet rs;
         int i = 0;
-        String query = "SELECT COUNT(*) FROM mov_pedido WHERE statusPedido!='Fechado'";
+        String query;
+        if (status.equals("todos")) {
+            query = "SELECT COUNT(*) FROM mov_pedido";
+        } else {
+            query = "SELECT COUNT(*) FROM mov_pedido WHERE statusPedido!='Fechado'";
+        }
 
         try {
             stmt = conn.getConn().prepareStatement(query);
@@ -37,14 +51,21 @@ public class PedidoDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         }
 
-        query = "SELECT * FROM mov_pedido WHERE statusPedido!='Fechado' order by dataPedido ASC";
+        if (status.equals("todos")) {
+            query = "SELECT * FROM mov_pedido order by dataPedido ASC";
+
+        } else {
+            query = "SELECT * FROM mov_pedido WHERE statusPedido!='Fechado' order by dataPedido ASC";
+
+        }
+
         try {
             stmt = conn.getConn().prepareStatement(query);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                retorno[i] = new Pedido(rs.getInt("codPedido"),rs.getFloat("valorTotal"), rs.getFloat("valorEntrega"), rs.getFloat("valorDesconto"),
-                        rs.getInt("codCliente"), rs.getInt("codEstabelecimento"), rs.getString("dataPedido"), rs.getString("statusPedido") );
+                retorno[i] = new Pedido(rs.getInt("codPedido"), rs.getFloat("valorTotal"), rs.getFloat("valorEntrega"), rs.getFloat("valorDesconto"),
+                        rs.getInt("codCliente"), rs.getInt("codEstabelecimento"), rs.getTimestamp("dataPedido"), rs.getString("statusPedido"));
                 i++;
             }
             stmt.close();
@@ -55,15 +76,36 @@ public class PedidoDAO {
         }
         return retorno;
     }
-     
-     
+
+    public Pedido[] buscaPedido(int codBusca) {
+        Pedido retorno[] = new Pedido[1];
+        PreparedStatement stmt;
+        ResultSet rs;
+        String query = "SELECT * FROM mov_pedido WHERE codPedido=" + codBusca;
+        try {
+            stmt = conn.getConn().prepareStatement(query);
+            rs = stmt.executeQuery();
+            rs.next();
+
+            retorno[0] = new Pedido(rs.getInt("codPedido"), rs.getFloat("valorTotal"), rs.getFloat("valorEntrega"), rs.getFloat("valorDesconto"),
+                    rs.getInt("codCliente"), rs.getInt("codEstabelecimento"), rs.getTimestamp("dataPedido"), rs.getString("statusPedido"));
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+
     public String[] carregaItemPedido(int codPedido) {
 
         String retorno[] = new String[1];
         PreparedStatement stmt;
         ResultSet rs;
         int i = 0;
-        String query = "SELECT COUNT(*) FROM mov_pedido_item WHERE codPedido="+codPedido;
+        String query = "SELECT COUNT(*) FROM mov_pedido_item WHERE codPedido=" + codPedido;
 
         try {
             stmt = conn.getConn().prepareStatement(query);
@@ -79,7 +121,7 @@ public class PedidoDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         }
 
-        query = "SELECT * FROM mov_pedido_item WHERE codPedido="+codPedido;
+        query = "SELECT * FROM mov_pedido_item WHERE codPedido=" + codPedido;
         try {
             stmt = conn.getConn().prepareStatement(query);
             rs = stmt.executeQuery();
@@ -96,7 +138,6 @@ public class PedidoDAO {
         }
         return retorno;
     }
-
 
     public void atualizaStatus(String novoStatus, int codPedido) { //UPDATE
         try {

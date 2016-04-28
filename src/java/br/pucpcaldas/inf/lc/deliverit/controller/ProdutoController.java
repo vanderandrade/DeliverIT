@@ -1,7 +1,7 @@
-package Controller;
+package br.pucpcaldas.inf.lc.deliverit.controller;
 
-import DAO.ProdutoDAO;
-import Model.Produto;
+import br.pucpcaldas.inf.lc.deliverit.dao.ProdutoDAO;
+import br.pucpcaldas.inf.lc.deliverit.model.Produto;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

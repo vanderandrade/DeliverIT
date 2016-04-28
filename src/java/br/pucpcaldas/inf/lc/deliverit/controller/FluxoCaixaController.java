@@ -1,9 +1,8 @@
-package Controller;
+package br.pucpcaldas.inf.lc.deliverit.controller;
 
-import DAO.FluxoCaixaDAO;
+import br.pucpcaldas.inf.lc.deliverit.dao.FluxoCaixaDAO;
 import java.io.IOException;
-import java.util.GregorianCalendar;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,39 +21,23 @@ public class FluxoCaixaController extends HttpServlet {
         MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         FluxoCaixaDAO registrodao = new FluxoCaixaDAO(conexao);
         boolean movimentacao;
-
+        
+        if(request.getParameter("button") != null )
+        {
+            request.setAttribute("dataBusca", request.getParameter("dataBusca"));            
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/autenticado/fluxoCaixa.jsp");
+            rd.forward(request, response);
+        }
         if ("entrada".equals(request.getParameter("movimentacao"))) {
             movimentacao = true;
         } else {
             movimentacao = false;
         }
 
-        registrodao.criarRegistro(getData(), getHora(), request.getParameter("descricao"), movimentacao, Float.parseFloat(request.getParameter("valor")));
+        registrodao.criarRegistro(registrodao.getData(), request.getParameter("descricao"), movimentacao, Float.parseFloat(request.getParameter("valor")));
         response.sendRedirect("fluxoCaixa.jsp");
     }
 
-    public String getHora() {
-        StringBuilder sb = new StringBuilder();
-        GregorianCalendar d = new GregorianCalendar();
 
-        sb.append(d.get(GregorianCalendar.HOUR_OF_DAY));
-        sb.append(":");
-        sb.append(d.get(GregorianCalendar.MINUTE));
-
-        return sb.toString();
-    }
     
-    public String getData() {
-        StringBuilder sb = new StringBuilder();
-        GregorianCalendar d = new GregorianCalendar();
-
-        sb.append(d.get(GregorianCalendar.DAY_OF_MONTH));
-        sb.append("/");
-        sb.append(d.get(GregorianCalendar.MONTH));
-        sb.append("/");
-        sb.append(d.get(GregorianCalendar.YEAR));
-        
-
-        return sb.toString();
-    }
 }

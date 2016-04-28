@@ -1,7 +1,7 @@
-<%@page import="DAO.CategoriaDAO"%>
-<%@page import="Model.Categoria"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.model.Categoria"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.dao.CategoriaDAO"%>
 <body>
-    <%   
+    <%
         CategoriaDAO categoriadao = new CategoriaDAO((MySqlController) session.getAttribute("conexao"));
         Categoria listaCategorias[] = categoriadao.carregaCategorias();
     %>
@@ -9,7 +9,6 @@
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
         <div id="page-wrapper">
             <div class="container-fluid">
-                <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
@@ -17,7 +16,6 @@
                         </h1>
                     </div>
                 </div>
-
                 <form class="form-horizontal" method="post" action="CategoriaController">
                     <fieldset>
                         <div class="form-group">
@@ -26,7 +24,6 @@
                                 <input id="cadastrar" name="cadastrar" placeholder="Insira o nome da categoria" class="form-control input-md" required="" type="text">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="cadastrar"></label>
                             <div class="col-md-4">
@@ -35,7 +32,6 @@
                         </div>
                     </fieldset>
                 </form>
-
                 <form class="form-horizontal" method="post" action="CategoriaController">
                     <fieldset>
                         <div class="form-group">
@@ -43,8 +39,7 @@
                             <div class="col-md-5">
                                 <select id="alterarCombo" name="alterarCombo" class="form-control">
                                     <%
-                                        
-                                    for (Categoria cat : listaCategorias) {
+                                        for (Categoria cat : listaCategorias) {
                                     %>
                                     <option value="<%=cat.getCodigo()%>"><%=cat.getNome()%></option>
                                     <%}%>
@@ -52,7 +47,6 @@
                                 <input id="novoNome" name="novoNome" placeholder="Insira o novo nome" class="form-control input-md" type="text">
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="alterar"></label>
                             <div class="col-md-4">
@@ -63,9 +57,7 @@
                     </fieldset>
                 </form>
             </div>
-             <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-             
-             
+            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />                          
         </div>
     </div>
     <script>

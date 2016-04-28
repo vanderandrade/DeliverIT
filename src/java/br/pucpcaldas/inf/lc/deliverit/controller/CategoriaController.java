@@ -1,6 +1,6 @@
-package Controller;
+package br.pucpcaldas.inf.lc.deliverit.controller;
 
-import DAO.CategoriaDAO;
+import br.pucpcaldas.inf.lc.deliverit.dao.CategoriaDAO;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

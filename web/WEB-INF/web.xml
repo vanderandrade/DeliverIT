@@ -2,19 +2,19 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LogoutController</servlet-name>
-        <servlet-class>Controller.LogoutController</servlet-class>
+        <servlet-class>br.pucpcaldas.inf.lc.deliverit.controller.LogoutController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ProdutoController</servlet-name>
-        <servlet-class>Controller.ProdutoController</servlet-class>
+        <servlet-class>br.pucpcaldas.inf.lc.deliverit.controller.ProdutoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>PedidoController</servlet-name>
-        <servlet-class>Controller.PedidoController</servlet-class>
+        <servlet-class>br.pucpcaldas.inf.lc.deliverit.controller.PedidoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FluxoCaixaController</servlet-name>
-        <servlet-class>Controller.FluxoCaixaController</servlet-class>
+        <servlet-class>br.pucpcaldas.inf.lc.deliverit.controller.FluxoCaixaController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
@@ -22,7 +22,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CategoriaController</servlet-name>
-        <servlet-class>Controller.CategoriaController</servlet-class>
+        <servlet-class>br.pucpcaldas.inf.lc.deliverit.controller.CategoriaController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CategoriaController</servlet-name>

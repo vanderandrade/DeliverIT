@@ -1,4 +1,4 @@
-package Controller;
+package br.pucpcaldas.inf.lc.deliverit.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
