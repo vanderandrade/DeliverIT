@@ -16,6 +16,10 @@
         font-size: 26pt;
     }
   }
+  
+  .esquerdinha{
+      margin-left: 50%;
+  }  
 
 .alert-danger {
     color: #a94442;

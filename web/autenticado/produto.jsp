@@ -64,16 +64,22 @@
                     <legend>Produtos</legend>
                     <% for (Produto prod : listaProduto) {%>
                     <div class="col-md-4 portfolio-item">
-                        <a href="#">
-                            <img class="img-responsive" src="http://placehold.it/300x180" alt="">
-                        </a>
-                        <h3>
-                            <%=prod.getNomeProduto()%> - <%=categoriadao.consultaCategoria(prod.getCodCategoria())%>
-                        </h3>
-                        <p>Preço: <%=prod.getPrecoProduto()%></p>
-                        <p>Estoque: <%=prod.getQtdEstoque()%></p>
-                        <a href="ProdutoController?action=Alterar&codProduto=<%=prod.getCodProduto()%>&nomeProduto=<%=prod.getNomeProduto()%>&precoProduto=<%=prod.getPrecoProduto()%>&quantidadeProduto=<%=prod.getQtdEstoque()%>&categoriaProduto=<%=prod.getCodCategoria()%>" class="btn btn-success">Alterar</a>
-                        <a href="ProdutoController?action=Excluir&codProduto=<%=prod.getCodProduto()%>" class="btn btn-danger">Excluir</a>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><%=prod.getNomeProduto()%></h3>
+                            </div>
+                            <div class="panel-body">
+                                <a href="#">
+                                    <img class="img-responsive img-thumbnail" src="http://placehold.it/300x180" alt="">
+                                </a>
+
+                                <p>Categoria: <%=categoriadao.consultaCategoria(prod.getCodCategoria())%> </p>                        
+                                <p>Preço: <%=prod.getPrecoProduto()%></p>
+                                <p>Estoque: <%=prod.getQtdEstoque()%></p>
+                                <a href="ProdutoController?action=Alterar&codProduto=<%=prod.getCodProduto()%>&nomeProduto=<%=prod.getNomeProduto()%>&precoProduto=<%=prod.getPrecoProduto()%>&quantidadeProduto=<%=prod.getQtdEstoque()%>&categoriaProduto=<%=prod.getCodCategoria()%>" class="btn btn-success">Alterar</a>
+                                <a href="ProdutoController?action=Excluir&codProduto=<%=prod.getCodProduto()%>" class="btn btn-danger">Excluir</a>
+                            </div>
+                        </div>
                     </div>
                     <%}%>
                 </div>

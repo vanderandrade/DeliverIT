@@ -1,6 +1,7 @@
 package br.pucpcaldas.inf.lc.deliverit.dao;
 
 import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
+import br.pucpcaldas.inf.lc.deliverit.model.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,5 +41,22 @@ public class ClienteDAO {
         }
 
         return "null";
+    }
+        public Cliente buscaCliente(int codCliente) {
+        Cliente cliente = null;
+        String query = "SELECT * FROM cad_cliente WHERE codCliente='" + codCliente + "'";
+        PreparedStatement stmt;
+        try {
+            stmt = conn.getConn().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            cliente = new Cliente(codCliente, rs.getString("nomeCliente"), rs.getString("enderecoCliente"));            
+            stmt.close();
+            return cliente;
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return cliente;
     }
 }

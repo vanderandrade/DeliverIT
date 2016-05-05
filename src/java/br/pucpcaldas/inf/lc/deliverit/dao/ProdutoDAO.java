@@ -13,13 +13,14 @@ public class ProdutoDAO {
     private MySqlController conn;
 
     public ProdutoDAO(MySqlController conexao) {
-        if(!conexao.isValid() || conexao==null)
+        if (!conexao.isValid() || conexao == null) {
             try {
                 conn = new MySqlController();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         conn = conexao;
     }
@@ -56,6 +57,25 @@ public class ProdutoDAO {
         }
 
         return "null";
+    }
+
+    public Produto consultaProduto(int codProduto) {
+        Produto retorno = null;
+        String query = "SELECT * FROM cad_produto WHERE codProduto='" + codProduto + "'";
+        PreparedStatement stmt;
+        try {
+            stmt = conn.getConn().prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+
+            rs.next();
+            retorno = new Produto(rs.getInt("codProduto"), rs.getString("nomeProduto"), rs.getInt("qtdEstoque"), rs.getFloat("precoProduto"), rs.getInt("codCategoria"));
+            stmt.close();
+            return retorno;
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return retorno;
     }
 
     public Produto[] carregaProduto() {

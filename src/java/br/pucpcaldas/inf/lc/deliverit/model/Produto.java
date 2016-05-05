@@ -3,6 +3,7 @@ package br.pucpcaldas.inf.lc.deliverit.model;
 public class Produto {
     private int codProduto;
     private String nomeProduto;
+    private int qtdProduto;
     private int qtdEstoque;
     private float precoProduto;
     private int codCategoria;
@@ -12,7 +13,7 @@ public class Produto {
         this.nomeProduto = nomeProduto;
         this.qtdEstoque = qtdEstoque;
         this.precoProduto = precoProduto;
-        this.codCategoria = codCategoria;
+        this.codCategoria = codCategoria;        
     }
     
     public Produto(int codProduto, String nomeProduto, int qtdEstoque, float precoProduto, int codCategoria) {

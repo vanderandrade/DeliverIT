@@ -39,7 +39,7 @@ public class MySqlController {
     {
         boolean value = false;        
         try {
-            value = conn.isValid(0);
+            value = conn.isValid(5);
         } catch (SQLException ex) {
             Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
         }
