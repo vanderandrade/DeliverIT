@@ -28,7 +28,7 @@ CREATE TABLE `cad_categoria` (
   `codCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `nomeCategoria` varchar(45) NOT NULL,
   PRIMARY KEY (`codCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `cad_categoria` (
 
 LOCK TABLES `cad_categoria` WRITE;
 /*!40000 ALTER TABLE `cad_categoria` DISABLE KEYS */;
-INSERT INTO `cad_categoria` VALUES (9,'Pecas'),(10,'Ferramenta'),(11,'Util'),(14,'tassssss');
+INSERT INTO `cad_categoria` VALUES (16,'Limpeza'),(17,'Higiene'),(18,'Bebidas'),(19,'Alimento');
 /*!40000 ALTER TABLE `cad_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:39
+-- Dump completed on 2016-05-06 13:10:46

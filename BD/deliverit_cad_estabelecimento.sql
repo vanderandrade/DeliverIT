@@ -37,7 +37,7 @@ CREATE TABLE `cad_estabelecimento` (
 
 LOCK TABLES `cad_estabelecimento` WRITE;
 /*!40000 ALTER TABLE `cad_estabelecimento` DISABLE KEYS */;
-INSERT INTO `cad_estabelecimento` VALUES (1,'Avenida Joao Pinheiro 2000, Pocos de Caldas MG');
+INSERT INTO `cad_estabelecimento` VALUES (1,'Av Padre Francis Cletus Cox, 1661, Poços de Caldas');
 /*!40000 ALTER TABLE `cad_estabelecimento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:40
+-- Dump completed on 2016-05-06 13:10:47
