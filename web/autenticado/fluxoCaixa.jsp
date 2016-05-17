@@ -30,13 +30,13 @@
                     <fieldset>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Descrição:</label>  
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <input id="cadastrar" name="descricao" placeholder="Descreva a operação realizada" class="form-control input-md" required="" type="text">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="movimentacao">Movimentação:</label>
-                            <div class="col-md-5">
+                            <div class="col-lg-2">
                                 <select id="movimentacao" name="movimentacao" class="form-control">
                                     <option value="entrada">Entrada</option>
                                     <option value="saida">Saída</option>
@@ -45,7 +45,7 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Valor(R$):</label>  
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <input id="valor" name="valor" placeholder="Valor de entrada/saída" class="form-control input-md" required="" type="text">
                             </div>
                         </div>
@@ -58,9 +58,10 @@
                     </fieldset>
                 </form>
                 <div class="row">
-                    <form method="post" action="FluxoCaixaController">
+                    <form  method="post" action="FluxoCaixaController">
                         <div class="form-group">
-                            <div class="col-md-4">                                
+                            <div class="col-lg-9"></div>
+                            <div class="col-md-2">                                
                                 <select id="dataBusca" name="dataBusca" class="form-control" required="">                                    
                                     <%
                                         for (String date : listaDatas) {

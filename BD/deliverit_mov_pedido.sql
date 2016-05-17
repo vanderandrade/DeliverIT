@@ -38,7 +38,7 @@ CREATE TABLE `mov_pedido` (
   KEY `codEstabelecimento_idx` (`codEstabelecimento`),
   CONSTRAINT `codCliente` FOREIGN KEY (`codCliente`) REFERENCES `cad_cliente` (`codCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `codEstabelecimento` FOREIGN KEY (`codEstabelecimento`) REFERENCES `cad_estabelecimento` (`codEstabelecimento`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +47,7 @@ CREATE TABLE `mov_pedido` (
 
 LOCK TABLES `mov_pedido` WRITE;
 /*!40000 ALTER TABLE `mov_pedido` DISABLE KEYS */;
-INSERT INTO `mov_pedido` VALUES (1,75.5,1.5,0,1,1,'2016-04-24 03:00:00','Criado'),(2,89.45,2.5,0,1,1,'2016-04-25 17:59:30','Criado'),(3,79.9,2.35,0,1,1,'2016-04-27 16:44:07','Processando');
+INSERT INTO `mov_pedido` VALUES (1,156.5,2.5,1,1,1,'2016-05-06 00:17:47','Realizado'),(2,84,4,0,2,1,'2016-05-06 00:36:13','Fechado');
 /*!40000 ALTER TABLE `mov_pedido` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:40
+-- Dump completed on 2016-05-06 13:10:47

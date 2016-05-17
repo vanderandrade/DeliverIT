@@ -33,7 +33,7 @@ CREATE TABLE `cad_produto` (
   PRIMARY KEY (`codProduto`),
   KEY `codCategoria_idx` (`codCategoria`),
   CONSTRAINT `codCategoria` FOREIGN KEY (`codCategoria`) REFERENCES `cad_categoria` (`codCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `cad_produto` (
 
 LOCK TABLES `cad_produto` WRITE;
 /*!40000 ALTER TABLE `cad_produto` DISABLE KEYS */;
-INSERT INTO `cad_produto` VALUES (6,'FITINHA',888,88888,9),(7,'teste',1,123,10),(8,'Testando',123,1231,9),(9,'Testando',12311,1231,9),(10,'Testandos',12311,1231,9),(11,'Chave De Fenda',5,200,10);
+INSERT INTO `cad_produto` VALUES (12,'Shampoo Clear',13,132,17),(13,'Desinfetante',8,98,16),(14,'Absolut Vodka',110,84,18),(15,'Pasta de Dente Colgate',4,93,17),(16,'Cerveja Brahma 500ml',4,321,18),(17,'Fio dental',6,193,17),(18,'Cerveja Skol 350ml',3,865,18),(19,'Doritos',5,431,19),(20,'Bolacha Passa-tempo',2,140,19),(21,'Jack Deniels',96,580,18),(22,'Detergente',3,123,16),(23,'Sabão em Pó',9,310,16);
 /*!40000 ALTER TABLE `cad_produto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:40
+-- Dump completed on 2016-05-06 13:10:48

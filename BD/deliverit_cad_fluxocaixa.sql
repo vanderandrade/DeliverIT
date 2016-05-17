@@ -31,7 +31,7 @@ CREATE TABLE `cad_fluxocaixa` (
   `valor` float NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codFluxoCaixa`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `cad_fluxocaixa` (
 
 LOCK TABLES `cad_fluxocaixa` WRITE;
 /*!40000 ALTER TABLE `cad_fluxocaixa` DISABLE KEYS */;
-INSERT INTO `cad_fluxocaixa` VALUES (1,'2016-04-24 13:00:00.00000',1,75.5,'Primeiro Fluxo'),(2,'2016-04-25 12:00:00.00000',1,55,'Cliente pagou pessoalmente'),(3,'2016-04-25 17:00:00.00000',0,10,'Retirada'),(4,'2016-04-25 18:13:05.87600',1,13,'Teste'),(5,'2016-04-27 17:07:49.99400',1,12,'TesteHoje'),(6,'2016-04-27 17:09:14.38100',1,123,'Iuhur');
+INSERT INTO `cad_fluxocaixa` VALUES (6,'2016-05-05 19:34:19.47900',1,84,'Pedido Nº 2'),(7,'2016-05-05 23:46:12.85700',1,84,'Pedido Nº 2'),(8,'2016-05-05 23:50:11.45400',1,155.5,'Pedido Nº 1'),(9,'2016-05-05 23:57:53.60400',1,84,'Pedido Nº 2'),(10,'2016-05-06 00:10:49.41700',1,155.5,'Pedido Nº 1'),(11,'2016-05-06 00:36:13.47600',1,84,'Pedido Nº 2'),(12,'2016-05-06 00:39:46.66100',1,123,'Teste');
 /*!40000 ALTER TABLE `cad_fluxocaixa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:39
+-- Dump completed on 2016-05-06 13:10:46

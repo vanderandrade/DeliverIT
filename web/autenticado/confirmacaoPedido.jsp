@@ -1,3 +1,6 @@
+<%@page import="br.pucpcaldas.inf.lc.deliverit.model.Pedido"%>
+<%@page import="br.pucpcaldas.inf.lc.deliverit.model.Cliente"%>
+
 <body>
     <div id="wrapper">
         <jsp:include page="../WEB-INF/incluir/menu.jsp" />
@@ -6,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-10">
                         <h1 class="page-header">
-                            Rota <small>-</small>
+                            Rota <small>-</small> Pedido Nº: <%=request.getParameter("codPedido")%>
                         </h1>
                     </div>
                 </div>
@@ -17,12 +20,17 @@
                     <div class="col-lg-3 col-md-6" id="mapa">                      
                     </div>
                     <div class="col-lg-3 col-md-6">
-                        <p>Pedido Nº: <%=request.getParameter("codPedido")%></p>
+                        <p>Cliente: <%=request.getAttribute("nomeCliente")%></p>                        
+                        <p>Produtos: <%=request.getAttribute("produtos")%></p>
+                        <p>Valor dos Produtos: R$ <%=request.getAttribute("valorProdutos")%></p>
+                        <p>Valor da Entrega: R$ <%=request.getAttribute("valorEntrega")%></p>
+                        <p>Valor do Desconto: R$ <%=request.getAttribute("valorDesconto")%></p>
+                        <p>Valor Total: R$ <%=request.getAttribute("valorTotal")%></p>
+                        
                     </div>
                 </div>
             </div>
-            <button id="print" onclick="printContents('rota');" >Print</button>
-            <div onclick="gmapPrint();">Print Button</div>
+         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         </div>
     </div>
     <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -36,40 +44,14 @@
                     $('body').empty().html(printcontent);
                     window.print();
                     $('body').html(restorepage);
-                }
-                function printContents(id)
-                {
-                    var contents = $("#" + id).html();
-                    if ($("#rota").length == 0)
-                    {
-                        var printDiv = null;
-                        printDiv = document.createElement('div');
-                        printDiv.setAttribute('id', 'printDiv');
-                        printDiv.setAttribute('class', 'printable');
-                        $(printDiv).appendTo('body');
-                    }
-                    $("#rota").html(contents);
-                    window.print();
-                    $("#rota").remove();
-                }
-                function gmapPrint() {
-                    var content = window.document.getElementById("mapa"); // get you map details
-                    var newWindow = window.open(); // open a new window
-                    newWindow.document.write(content.innerHTML); // write the map into the new window
-                    newWindow.print(); // print the new window
-                }
-                function sleepFor(sleepDuration) {
-                    var now = new Date().getTime();
-                    while (new Date().getTime() < now + sleepDuration) { /* do nothing */
-                    }
-                }
+                }               
                 function initialize() {
                     directionsDisplay = new google.maps.DirectionsRenderer();
                     var latlng = new google.maps.LatLng(-21.78313032, -46.56889522);
                     var enderecoPartida = "-21.78313032, -46.56889522"
-                    var enderecoChegada = "-21.78313032, -46.55688301"
-                    //var enderecoPartida = "<%=request.getAttribute("rotaPartida")%>"
-                    //var enderecoChegada = "<%=request.getAttribute("rotaChegada")%>"
+                    //var enderecoChegada = "-21.78313032, -46.55688301"
+                    //var enderecoPartida = 
+                    var enderecoChegada = "<%=request.getAttribute("rotaChegada")%>"
                     var options = {
                         zoom: 5,
                         center: latlng,

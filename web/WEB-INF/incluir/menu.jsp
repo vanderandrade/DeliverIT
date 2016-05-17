@@ -10,7 +10,7 @@
     </div>        
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><%=session.getAttribute("usuario")%> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%=session.getAttribute("usuario")%> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-gear"></i> Configurações</a>
@@ -36,20 +36,17 @@
                     <li>
                         <a href="produto.jsp">Produtos</a>
                     </li>
-                    <li>
-                        <a href="#">Descontos</a>
-                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-fw fa-edit"></i> Regras de Negócio</a>
             </li>
             <li>
                 <a href="fluxoCaixa.jsp"><i class="fa fa-fw fa-wrench"></i> Fluxo de Caixa</a>
-            </li>                    
+            </li>      
+            <li>
+                <a href="#"><i class="fa fa-fw fa-bar-chart-o"></i> Relatórios</a>
+            </li>
             <li>
                 <a href="#"><i class="fa fa-fw fa-file"></i> ITEM</a>
             </li>

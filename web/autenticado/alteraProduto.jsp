@@ -45,6 +45,7 @@
                                     <input id="quantidadeProduto" name="quantidadeProduto" placeholder="Digite a quantidade em estoque" class="form-control input-md" required="" type="text" value="<%=request.getAttribute("quantidadeProduto")%>">
                                 </div>    
                             </div>
+                            <div class="col-md-5"></div>
                             <div class="col-md-4 ">      
                                 <input type="hidden" name="codProduto" value="<%=request.getAttribute("codProduto")%>">
                                 <button id="alterar" name="button" value="alterar" class="btn btn-primary">Alterar</button>
@@ -53,9 +54,13 @@
                         </fieldset>
                     </form>                   
                 </div>
+                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />  <br /><br />
             </div>
+
         </div>
+
     </div>    
+
     <script>
         $('.collapse').collapse()
     </script>

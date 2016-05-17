@@ -34,7 +34,7 @@ CREATE TABLE `mov_pedido_item` (
   KEY `codProduto_idx` (`codProduto`),
   CONSTRAINT `codPedido` FOREIGN KEY (`codPedido`) REFERENCES `mov_pedido` (`codPedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `codProduto` FOREIGN KEY (`codProduto`) REFERENCES `cad_produto` (`codProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='		';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='		';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `mov_pedido_item` (
 
 LOCK TABLES `mov_pedido_item` WRITE;
 /*!40000 ALTER TABLE `mov_pedido_item` DISABLE KEYS */;
-INSERT INTO `mov_pedido_item` VALUES (1,11,1,7),(2,6,1,3),(3,7,1,2),(4,11,2,5),(5,6,2,4);
+INSERT INTO `mov_pedido_item` VALUES (1,16,1,12),(2,19,1,2),(3,21,1,1),(4,12,2,2),(5,17,2,1),(6,16,2,12);
 /*!40000 ALTER TABLE `mov_pedido_item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:40
+-- Dump completed on 2016-05-06 13:10:47

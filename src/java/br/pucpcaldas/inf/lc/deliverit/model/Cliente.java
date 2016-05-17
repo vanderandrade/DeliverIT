@@ -32,6 +32,10 @@ public class Cliente {
     public String getSenhaCliente() {
         return senhaCliente;
     }
+
+    public String getEnderecoCliente() {
+        return enderecoCliente;
+    }
     
     
     

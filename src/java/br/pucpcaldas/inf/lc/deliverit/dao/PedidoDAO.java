@@ -2,6 +2,7 @@ package br.pucpcaldas.inf.lc.deliverit.dao;
 
 import br.pucpcaldas.inf.lc.deliverit.controller.MySqlController;
 import br.pucpcaldas.inf.lc.deliverit.model.Pedido;
+import br.pucpcaldas.inf.lc.deliverit.model.Produto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -87,7 +88,7 @@ public class PedidoDAO {
             rs = stmt.executeQuery();
             rs.next();
 
-            retorno[0] = new Pedido(rs.getInt("codPedido"), rs.getFloat("valorTotal"), rs.getFloat("valorEntrega"), rs.getFloat("valorDesconto"),
+            retorno[0] = new Pedido(rs.getInt("codPedido"), rs.getFloat("valorTotal")-rs.getFloat("valorDesconto"), rs.getFloat("valorEntrega"), rs.getFloat("valorDesconto"),
                     rs.getInt("codCliente"), rs.getInt("codEstabelecimento"), rs.getTimestamp("dataPedido"), rs.getString("statusPedido"));
 
             stmt.close();
@@ -99,9 +100,33 @@ public class PedidoDAO {
         return retorno;
     }
 
-    public String[] carregaItemPedido(int codPedido) {
+    public int carregaQtdPedido(int codPedido, int codProduto) {
+        int retorno = 0;
+        PreparedStatement stmt;
+        ResultSet rs;
 
-        String retorno[] = new String[1];
+        String query = "SELECT * FROM mov_pedido_item WHERE codPedido=" + codPedido + " AND codProduto=" + codProduto;
+        System.out.println("QUERY " + query);
+        try {
+            stmt = conn.getConn().prepareStatement(query);
+            rs = stmt.executeQuery();
+            rs.next();
+            retorno = rs.getInt("qtdProduto");
+            System.out.println("retorno: " + retorno);
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MySqlController.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+
+    }
+
+    public Produto[] carregaItemPedido(int codPedido) {
+
+        Produto retorno[] = new Produto[1];
         PreparedStatement stmt;
         ResultSet rs;
         int i = 0;
@@ -113,7 +138,7 @@ public class PedidoDAO {
 
             rs.next();
 
-            retorno = new String[rs.getInt(1)];
+            retorno = new Produto[rs.getInt(1)];
             stmt.close();
 
         } catch (SQLException ex) {
@@ -127,7 +152,7 @@ public class PedidoDAO {
             rs = stmt.executeQuery();
             ProdutoDAO produtodao = new ProdutoDAO(conn);
             while (rs.next()) {
-                retorno[i] = new String(rs.getInt("qtdProduto") + " Unid. - " + produtodao.consultaNomeProduto(rs.getInt("codProduto")));
+                retorno[i] = produtodao.consultaProduto(rs.getInt("codProduto"));
                 i++;
             }
             stmt.close();

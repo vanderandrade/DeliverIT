@@ -9,21 +9,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CategoriaDAO {
+
     private MySqlController conn;
-    
-    public CategoriaDAO(MySqlController conexao)
-    {
-             if(!conexao.isValid() || conexao==null)
+
+    public CategoriaDAO(MySqlController conexao) {
+        if (!conexao.isValid() || conexao == null) {
             try {
                 conexao = new MySqlController();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         this.conn = conexao;
     }
-    
+
     public String consultaCategoria(int codCategoria) {
 
         String query = "SELECT nomeCategoria FROM cad_categoria WHERE codCategoria='" + codCategoria + "'";
@@ -39,9 +40,9 @@ public class CategoriaDAO {
         } catch (SQLException ex) {
             Logger.getLogger(MySqlController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return "null";
-        
+
     }
 
     public Categoria[] carregaCategorias() {

@@ -30,7 +30,10 @@ CREATE TABLE `cad_funcionario` (
   `senha` varchar(45) NOT NULL,
   `tipoFuncionario` int(11) NOT NULL,
   `nomeFuncionario` varchar(45) NOT NULL,
-  PRIMARY KEY (`idFuncionario`)
+  `codEstabelecimento` int(11) NOT NULL,
+  PRIMARY KEY (`idFuncionario`),
+  KEY `codEstacionamento_idx` (`codEstabelecimento`),
+  CONSTRAINT `codEstacionamento` FOREIGN KEY (`codEstabelecimento`) REFERENCES `cad_estabelecimento` (`codEstabelecimento`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +43,7 @@ CREATE TABLE `cad_funcionario` (
 
 LOCK TABLES `cad_funcionario` WRITE;
 /*!40000 ALTER TABLE `cad_funcionario` DISABLE KEYS */;
-INSERT INTO `cad_funcionario` VALUES (1,'leo','1',0,'Leonardo');
+INSERT INTO `cad_funcionario` VALUES (1,'admin','admin',0,'Administrador',1);
 /*!40000 ALTER TABLE `cad_funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-27 14:30:39
+-- Dump completed on 2016-05-06 13:10:46

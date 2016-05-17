@@ -21,23 +21,27 @@ public class FluxoCaixaController extends HttpServlet {
         MySqlController conexao = (MySqlController) session.getAttribute("conexao");
         FluxoCaixaDAO registrodao = new FluxoCaixaDAO(conexao);
         boolean movimentacao;
-        
-        if(request.getParameter("button") != null )
-        {
-            request.setAttribute("dataBusca", request.getParameter("dataBusca"));            
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/autenticado/fluxoCaixa.jsp");
-            rd.forward(request, response);
-        }
+
         if ("entrada".equals(request.getParameter("movimentacao"))) {
             movimentacao = true;
         } else {
             movimentacao = false;
         }
+        if (request.getParameter("button") != null) {
+            switch (request.getParameter("button")) {
+                case "registrar":
+                    registrodao.criarRegistro(registrodao.getData(), request.getParameter("descricao"), movimentacao, Float.parseFloat(request.getParameter("valor")));
+                    response.sendRedirect("fluxoCaixa.jsp");
+                    break;
+                case "visualizar":
+                    request.setAttribute("dataBusca", request.getParameter("dataBusca"));
+                    RequestDispatcher rd = getServletContext().getRequestDispatcher("/autenticado/fluxoCaixa.jsp");
+                    rd.forward(request, response);
+                    break;
+            }
 
-        registrodao.criarRegistro(registrodao.getData(), request.getParameter("descricao"), movimentacao, Float.parseFloat(request.getParameter("valor")));
-        response.sendRedirect("fluxoCaixa.jsp");
+        }
+
     }
 
-
-    
 }
