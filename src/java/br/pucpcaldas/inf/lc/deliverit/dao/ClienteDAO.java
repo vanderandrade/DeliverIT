@@ -42,7 +42,8 @@ public class ClienteDAO {
 
         return "null";
     }
-        public Cliente buscaCliente(int codCliente) {
+
+    public Cliente buscaCliente(int codCliente) {
         Cliente cliente = null;
         String query = "SELECT * FROM cad_cliente WHERE codCliente='" + codCliente + "'";
         PreparedStatement stmt;
@@ -50,7 +51,7 @@ public class ClienteDAO {
             stmt = conn.getConn().prepareStatement(query);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            cliente = new Cliente(codCliente, rs.getString("nomeCliente"), rs.getString("enderecoCliente"));            
+            cliente = new Cliente(codCliente, rs.getString("nomeCliente"), rs.getString("enderecoCliente"));
             stmt.close();
             return cliente;
         } catch (SQLException ex) {
